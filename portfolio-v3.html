@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paras Nagda — UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf9f7;
+  --bg2:#f3f1ec;
+  --bg3:#eae7e0;
+  --white:#ffffff;
+  --border:rgba(0,0,0,0.07);
+  --border2:rgba(0,0,0,0.13);
+  --text:#1a1814;
+  --text2:#6b6760;
+  --text3:#a8a5a0;
+  --accent:#2d5a3d;
+  --accent-light:#e8f0eb;
+  --accent2:#b87333;
+  --accent2-light:#fdf0e3;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --sh-sm:0 1px 4px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --sh-md:0 4px 20px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
+  --sh-lg:0 16px 48px rgba(0,0,0,0.1),0 4px 12px rgba(0,0,0,0.05);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--text);text-decoration:none;letter-spacing:-0.02em}
+.nav-logo span{color:var(--accent);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{padding:6px 14px;border-radius:100px;font-size:13.5px;color:var(--text2);text-decoration:none;transition:all .18s;font-weight:400}
+.nav-link:hover{background:var(--bg2);color:var(--text)}
+.nav-cta{padding:8px 20px;border-radius:100px;background:var(--text);color:var(--white);font-size:13.5px;font-weight:500;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:var(--sans);margin-left:6px}
+.nav-cta:hover{background:var(--accent);transform:translateY(-1px);box-shadow:var(--sh-md)}
+
+/* PAGE */
+.page{max-width:780px;margin:0 auto;padding:0 28px 100px}
+
+/* HERO */
+.hero{padding:80px 0 64px;position:relative}
+.hero-avail{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-light);border-radius:100px;font-size:12px;font-weight:500;color:var(--accent);margin-bottom:28px;border:1px solid rgba(45,90,61,0.15)}
+.avail-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-name{font-family:var(--serif);font-size:clamp(44px,8vw,68px);font-weight:300;line-height:1.06;letter-spacing:-0.03em;color:var(--text);margin-bottom:22px}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-name .muted{color:var(--text3)}
+.hero-bio{font-size:16.5px;color:var(--text2);line-height:1.75;max-width:540px;margin-bottom:36px;font-weight:300}
+.hero-bio strong{color:var(--text);font-weight:500}
+.hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--text);color:var(--white);border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);transition:all .2s;box-shadow:var(--sh-sm)}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:var(--sh-md)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--white);color:var(--text);border-radius:100px;font-size:14px;font-weight:400;text-decoration:none;border:1px solid var(--border2);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.btn-secondary:hover{border-color:var(--text);transform:translateY(-1px);box-shadow:var(--sh-sm)}
+.hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:36px;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat-num{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--text);letter-spacing:-0.02em;line-height:1;margin-bottom:5px}
+.stat-label{font-size:12.5px;color:var(--text3);font-weight:400}
+
+/* SECTION */
+.section{margin-bottom:80px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec-title{font-family:var(--serif);font-size:34px;font-weight:300;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px;line-height:1.18}
+.sec-title em{font-style:italic;color:var(--accent)}
+.sec-sub{font-size:15px;color:var(--text2);margin-bottom:32px;font-weight:300}
+
+/* SKILLS */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.skill-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;background:var(--white);border:1px solid var(--border2);border-radius:100px;font-size:13px;color:var(--text2);font-weight:400;transition:all .2s;cursor:default}
+.skill-pill:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateY(-1px);box-shadow:var(--sh-sm)}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:var(--accent2);flex-shrink:0}
+.pill-dot.blue{background:#4a7fc1}
+.pill-dot.purple{background:#7c5cbf}
+
+/* PROJECTS */
+.projects-list{display:flex;flex-direction:column;gap:16px}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;color:inherit;display:block;box-shadow:var(--sh-sm)}
+.proj-card:hover{border-color:var(--border2);box-shadow:var(--sh-lg);transform:translateY(-3px)}
+.proj-inner{display:grid;grid-template-columns:240px 1fr}
+.proj-thumb{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:56px;transition:transform .3s;min-height:180px;position:relative;overflow:hidden}
+.proj-card:hover .proj-thumb-emoji{transform:scale(1.12)}
+.proj-thumb-emoji{transition:transform .3s;position:relative;z-index:1}
+.proj-body{padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.proj-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--accent-light);color:var(--accent);letter-spacing:.02em}
+.proj-tag.amber{background:var(--accent2-light);color:var(--accent2)}
+.proj-tag.blue{background:#e8eef8;color:#4a7fc1}
+.proj-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--text);margin-bottom:8px;line-height:1.25;letter-spacing:-.01em}
+.proj-desc{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;margin-bottom:18px}
+.proj-result{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);padding:4px 10px;border-radius:100px;margin-bottom:18px}
+.proj-footer{display:flex;align-items:center;justify-content:space-between}
+.proj-year{font-size:12px;color:var(--text3)}
+.proj-arrow{width:34px;height:34px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.proj-card:hover .proj-arrow{background:var(--text);color:white}
+.proj-arrow svg{width:14px;height:14px}
+
+/* MARKETING SECTION */
+.marketing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.m-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--sh-sm);transition:all .2s}
+.m-card:hover{box-shadow:var(--sh-md);border-color:var(--border2)}
+.m-icon{font-size:22px;margin-bottom:10px}
+.m-num{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--text);letter-spacing:-.02em;margin-bottom:4px}
+.m-label{font-size:13px;color:var(--text2);font-weight:300;line-height:1.5}
+.m-card.wide{grid-column:1/-1;display:flex;align-items:center;gap:24px;padding:22px 28px}
+.m-card.wide .m-icon{font-size:28px;margin-bottom:0;flex-shrink:0}
+.m-card.wide .m-text{flex:1}
+
+/* TESTIMONIALS */
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm);transition:all .2s}
+.t-card:hover{box-shadow:var(--sh-md);border-color:var(--border2)}
+.t-card.feat{background:var(--text);border-color:var(--text);grid-column:1/-1}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.star{color:var(--accent2);font-size:13px}
+.t-card.feat .star{color:#f0c060}
+.t-quote{font-size:14px;color:var(--text2);line-height:1.72;margin-bottom:18px;font-style:italic;font-weight:300}
+.t-card.feat .t-quote{color:rgba(255,255,255,0.72);font-size:15.5px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-ava{width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0}
+.t-card.feat .t-ava{background:rgba(255,255,255,0.12);color:white}
+.t-name{font-size:13.5px;font-weight:500;color:var(--text)}
+.t-card.feat .t-name{color:white}
+.t-role{font-size:12px;color:var(--text3)}
+.t-card.feat .t-role{color:rgba(255,255,255,0.42)}
+
+/* CAREER */
+.career-list{display:flex;flex-direction:column}
+.career-item{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--border)}
+.career-item:last-child{border-bottom:none}
+.c-period{font-size:12.5px;color:var(--text3);padding-top:3px;line-height:1.55}
+.c-period strong{display:block;font-weight:500;color:var(--text2);font-size:13px;margin-bottom:2px}
+.c-role{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:-.01em;line-height:1.2}
+.c-company{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:9px}
+.c-desc{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300}
+.c-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--accent-light);color:var(--accent);margin-top:10px}
+.c-highlight{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:100px;background:var(--accent2-light);color:var(--accent2);margin-top:8px}
+
+/* CONTACT */
+.contact-wrap{background:var(--white);border:1px solid var(--border);border-radius:28px;padding:52px 48px;box-shadow:var(--sh-sm);text-align:center;position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle,var(--accent-light) 0%,transparent 70%);pointer-events:none}
+.contact-wrap::after{content:'';position:absolute;bottom:-80px;left:-80px;width:240px;height:240px;background:radial-gradient(circle,var(--accent2-light) 0%,transparent 70%);pointer-events:none}
+.contact-emoji{font-size:40px;margin-bottom:16px}
+.contact-title{font-family:var(--serif);font-size:34px;font-weight:300;letter-spacing:-.02em;color:var(--text);margin-bottom:10px;line-height:1.15}
+.contact-title em{font-style:italic;color:var(--accent)}
+.contact-sub{font-size:15px;color:var(--text2);max-width:400px;margin:0 auto 32px;font-weight:300;line-height:1.7}
+.contact-actions{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px;position:relative;z-index:1}
+.social-links{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.social-link{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;border:1px solid var(--border2);font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;background:var(--bg)}
+.social-link:hover{border-color:var(--text);color:var(--text);background:var(--white);transform:translateY(-1px);box-shadow:var(--sh-sm)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text3)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0}
+.hero{animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .nav-links .nav-link{display:none}
+  .page{padding:0 16px 80px}
+  .hero{padding:48px 0 44px}
+  .hero-name{font-size:40px}
+  .hero-stats{gap:22px}
+  .proj-inner{grid-template-columns:1fr}
+  .proj-thumb{min-height:160px;aspect-ratio:16/9}
+  .t-grid{grid-template-columns:1fr}
+  .t-card.feat{grid-column:unset}
+  .career-item{grid-template-columns:1fr;gap:6px}
+  .marketing-grid{grid-template-columns:1fr}
+  .m-card.wide{flex-direction:column;align-items:flex-start;gap:10px}
+  .contact-wrap{padding:36px 24px}
+  footer{flex-direction:column;gap:8px;text-align:center}
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+::selection{background:var(--accent-light);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Paras<span>.</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-link" href="#projects">Work</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="nav-link" href="#contact">Contact</a>
+    <a class="nav-cta" href="#contact">Hire me →</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-avail">
+      <span class="avail-dot"></span>
+      Available for freelance &amp; full-time roles · Mumbai
+    </div>
+
+    <h1 class="hero-name">
+      Design that works.<br>
+      <em>Marketing</em> that sells.
+    </h1>
+
+    <p class="hero-bio">
+      Hey, I'm <strong>Paras Nagda</strong> — a UI/UX Designer based in Mumbai with <strong>2+ years</strong> of experience crafting intuitive digital products. I sit at the intersection of <strong>design and performance marketing</strong> — I don't just make things beautiful, I make them convert.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});return false;">
+        View my work
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+      <a class="btn-secondary" href="#contact" id="hire-btn">Get in touch</a>
+      <a class="btn-secondary" href="https://www.behance.net" target="_blank">
+        Behance
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1h4l2 3-2 3H1V1z"/><path d="M7 7h4M7 5h4"/><circle cx="9" cy="5" r="2"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projects delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">₹13.4L</div>
+        <div class="stat-label">Revenue driven for clients</div>
+      </div>
+      <div>
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Avg. engagement lift</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section fade-up" id="skills">
+    <div class="eyebrow">What I do</div>
+    <h2 class="sec-title">Skills &amp; <em>expertise</em></h2>
+    <p class="sec-sub">From research to pixels — and all the way to campaign performance.</p>
+
+    <div class="skills-wrap">
+      <span class="skill-pill"><span class="pill-dot"></span>UI Design</span>
+      <span class="skill-pill"><span class="pill-dot"></span>UX Research</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Wireframing</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Prototyping</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Design Thinking</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Usability Testing</span>
+      <span class="skill-pill"><span class="pill-dot"></span>User Flows</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Information Architecture</span>
+      <span class="skill-pill"><span class="pill-dot"></span>Responsive Design</span>
+      <span class="skill-pill"><span class="pill-dot blue"></span>Figma</span>
+      <span class="skill-pill"><span class="pill-dot blue"></span>Canva</span>
+      <span class="skill-pill"><span class="pill-dot blue"></span>Wix Studio</span>
+      <span class="skill-pill"><span class="pill-dot blue"></span>Lovable</span>
+      <span class="skill-pill"><span class="pill-dot purple"></span>Meta Ads Manager</span>
+      <span class="skill-pill"><span class="pill-dot purple"></span>Ad Creative Design</span>
+      <span class="skill-pill"><span class="pill-dot purple"></span>Audience Targeting</span>
+      <span class="skill-pill"><span class="pill-dot purple"></span>Campaign Optimisation</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section fade-up" id="projects">
+    <div class="eyebrow">Selected work</div>
+    <h2 class="sec-title">Projects that <em>delivered</em></h2>
+    <p class="sec-sub">Real clients, real problems, real results.</p>
+
+    <div class="projects-list">
+
+      <!-- A1 Guard -->
+      <a class="proj-card" href="#" onclick="return false;">
+        <div class="proj-inner">
+          <div class="proj-thumb" style="background:#edf0f5;">
+            <span class="proj-thumb-emoji">🛡️</span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="proj-tag">Brand Identity</span>
+                <span class="proj-tag amber">Web Design</span>
+                <span class="proj-tag blue">Automotive</span>
+              </div>
+              <div class="proj-title">A1 Guard — Car PPF Brand &amp; Website</div>
+              <div class="proj-desc">Full brand identity system — logo, colour palette, typography, and iconography — for a car Paint Protection Film brand. Redesigned the website with a customer-focused information architecture and strong conversion-driven calls-to-action.</div>
+              <div class="proj-result">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1,7 4,4 7,6 11,2"/></svg>
+                ₹13,42,529 in revenue driven
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-year">2025</span>
+              <div class="proj-arrow">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Maulika Sharma -->
+      <a class="proj-card" href="#" onclick="return false;">
+        <div class="proj-inner">
+          <div class="proj-thumb" style="background:#f0f5ee;">
+            <span class="proj-thumb-emoji">💪</span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="proj-tag">Web Design</span>
+                <span class="proj-tag amber">UX Strategy</span>
+              </div>
+              <div class="proj-title">Maulika Sharma — Fitness Coach Website</div>
+              <div class="proj-desc">Designed a clean, conversion-focused coaching website with warm visual identity. Mapped user journeys for prospective coaching clients to reduce friction from discovery to booking. Mobile-first responsive design.</div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-year">2025</span>
+              <div class="proj-arrow">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dr Aryan Mehta -->
+      <a class="proj-card" href="#" onclick="return false;">
+        <div class="proj-inner">
+          <div class="proj-thumb" style="background:#f0eef8;">
+            <span class="proj-thumb-emoji">🫀</span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="proj-tag">Medical Web Design</span>
+                <span class="proj-tag blue">Lovable</span>
+              </div>
+              <div class="proj-title">Dr. Aryan Mehta — Cardiology Website</div>
+              <div class="proj-desc">Modern, trust-first medical website — hero section, floating stat cards (5,000+ procedures, 18+ years experience), and a conversion-focused layout. Navigation structured so patients find what they need in under 3 seconds.</div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-year">2026</span>
+              <div class="proj-arrow">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tatvika -->
+      <a class="proj-card" href="#" onclick="return false;">
+        <div class="proj-inner">
+          <div class="proj-thumb" style="background:#fdf3e7;">
+            <span class="proj-thumb-emoji">✨</span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="proj-tag">UI/UX Redesign</span>
+                <span class="proj-tag amber">Figma</span>
+              </div>
+              <div class="proj-title">Tatvika — End-to-End Website Redesign</div>
+              <div class="proj-desc">Full redesign — user research, wireframes, and high-fidelity Figma prototypes. Improved information hierarchy and visual design. Delivered responsive desktop and mobile designs.</div>
+              <div class="proj-result">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1,7 4,4 7,6 11,2"/></svg>
+                30% increase in user engagement
+              </div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-year">2024</span>
+              <div class="proj-arrow">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- DIGITAL MARKETING -->
+  <section class="section fade-up" id="marketing">
+    <div class="eyebrow">Beyond design</div>
+    <h2 class="sec-title">Performance <em>marketing</em></h2>
+    <p class="sec-sub">I don't just design — I run campaigns that drive real business results.</p>
+
+    <div class="marketing-grid">
+      <div class="m-card">
+        <div class="m-icon">📣</div>
+        <div class="m-num">15</div>
+        <div class="m-label">Active Meta &amp; Instagram campaigns managed simultaneously</div>
+      </div>
+      <div class="m-card wide">
+        <div class="m-icon">💰</div>
+        <div class="m-text">
+          <div class="m-num">₹1,25,926 ad spend → ₹13,42,529 revenue</div>
+          <div class="m-label">Managed total Meta ad spend over 3 years across conversions, engagement, reach, and retargeting campaigns — delivering consistent ROI for clients.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section fade-up" id="testimonials">
+    <div class="eyebrow">Social proof</div>
+    <h2 class="sec-title">What clients <em>say</em></h2>
+    <p class="sec-sub">Words from the people I've worked with.</p>
+
+    <div class="t-grid">
+      <div class="t-card feat">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-quote">"Paras brings clarity to chaos. Their product thinking is grounded, data-driven, and genuinely inspiring. One of the sharpest designers I've worked with — and the results speak for themselves."</p>
+        <div class="t-author">
+          <div class="t-ava">LT</div>
+          <div>
+            <div class="t-name">Leo Tan</div>
+            <div class="t-role">Product Strategy, Atlassian</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-quote">"The website Paras designed for my clinic instantly built trust with patients. Exactly what I needed."</p>
+        <div class="t-author">
+          <div class="t-ava" style="background:#f0eef8;color:#7c5cbf">AM</div>
+          <div>
+            <div class="t-name">Dr. Aryan Mehta</div>
+            <div class="t-role">Cardiologist, Mumbai</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="t-quote">"Paras redesigned our entire website and the engagement numbers jumped 30%. Highly recommended."</p>
+        <div class="t-author">
+          <div class="t-ava" style="background:var(--accent2-light);color:var(--accent2)">TV</div>
+          <div>
+            <div class="t-name">Tatvika Team</div>
+            <div class="t-role">Client, Website Redesign</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section fade-up" id="experience">
+    <div class="eyebrow">Experience</div>
+    <h2 class="sec-title">Career <em>journey</em></h2>
+    <p class="sec-sub">Every role has sharpened how I think about design and business.</p>
+
+    <div class="career-list">
+
+      <div class="career-item">
+        <div class="c-period"><strong>2026</strong>Freelance</div>
+        <div>
+          <div class="c-role">UI/UX Designer</div>
+          <div class="c-company">Dr. Aryan Mehta — Cardiology Clinic</div>
+          <div class="c-desc">Designed a modern, trust-first medical website — hero section, floating stat cards, and conversion-focused layout using Lovable. Structured navigation so patients could find what they need in under 3 seconds.</div>
+          <span class="c-badge"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;display:inline-block;animation:blink 2s infinite"></span>Most recent</span>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="c-period"><strong>2025</strong>Freelance</div>
+        <div>
+          <div class="c-role">Brand Identity &amp; Web Designer</div>
+          <div class="c-company">A1 Guard — Car PPF Brand</div>
+          <div class="c-desc">Full brand identity system and website redesign for a car Paint Protection Film brand. Delivered wireframes and Figma prototypes before final handoff. Ad campaigns and the website together drove ₹13,42,529 in total sales.</div>
+          <span class="c-highlight">₹13.4L revenue driven</span>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="c-period"><strong>2025</strong>Freelance</div>
+        <div>
+          <div class="c-role">UI/UX Web Designer</div>
+          <div class="c-company">Maulika Sharma — Fitness Coach</div>
+          <div class="c-desc">Conversion-focused coaching website with warm visual identity. Mapped user journeys for prospective clients to reduce friction from discovery to booking. Mobile-first responsive design.</div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="c-period"><strong>2024</strong>Freelance</div>
+        <div>
+          <div class="c-role">UI/UX Designer</div>
+          <div class="c-company">Tatvika</div>
+          <div class="c-desc">End-to-end website redesign — user research, wireframes, and high-fidelity Figma prototypes. Increased user engagement by 30% through improved information hierarchy and stronger visual design.</div>
+          <span class="c-highlight">+30% engagement</span>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="c-period"><strong>2024</strong>Internship</div>
+        <div>
+          <div class="c-role">UI/UX Design Intern</div>
+          <div class="c-company">Brain Quest</div>
+          <div class="c-desc">Contributed to product design sprints — created user flows, low-fidelity wireframes, and usability test documentation. Supported senior designers in delivering UX research findings and design iterations.</div>
+        </div>
+      </div>
+
+      <div class="career-item">
+        <div class="c-period"><strong>2023–Now</strong>Ongoing</div>
+        <div>
+          <div class="c-role">Ad Creative Designer &amp; Campaign Manager</div>
+          <div class="c-company">Meta &amp; Instagram Ads</div>
+          <div class="c-desc">Managed 15 active campaigns across conversions, engagement, reach, and retargeting. Total ad spend of ₹1,25,926 generating 1.34Cr impressions and 3.59L reach. Designed scroll-stopping creatives using UX principles.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section fade-up" id="contact">
+    <div class="contact-wrap">
+      <div class="contact-emoji">👋</div>
+      <h2 class="contact-title">Let's work <em>together</em></h2>
+      <p class="contact-sub">Open to freelance projects, full-time design roles, and interesting collaborations. Based in Mumbai — working globally.</p>
+
+      <div class="contact-actions">
+        <button class="btn-primary" id="copy-btn" onclick="copyMail()">
+          Copy email
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="11" height="8" rx="1.5"/><polyline points="1,3 6.5,8 12,3"/></svg>
+        </button>
+        <a class="btn-secondary" href="mailto:parasnagda911@gmail.com">
+          Send email
+        </a>
+        <a class="btn-secondary" href="tel:+918080783786">
+          +91 8080783786
+        </a>
+      </div>
+
+      <div class="social-links">
+        <a class="social-link" href="https://www.behance.net" target="_blank">Behance Portfolio</a>
+        <a class="social-link" href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a class="social-link" href="https://twitter.com" target="_blank">Twitter / X</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Paras Nagda · UI/UX Designer · Mumbai</span>
+  <span>parasnagda911@gmail.com</span>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.animation = 'fadeUp 0.65s cubic-bezier(.22,1,.36,1) both';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  el.style.animation = 'none';
+  obs.observe(el);
+});
+
+// Copy email
+function copyMail() {
+  const btn = document.getElementById('copy-btn');
+  navigator.clipboard.writeText('parasnagda911@gmail.com').then(() => {
+    btn.innerHTML = 'Copied! ✓';
+    btn.style.background = 'var(--accent)';
+    setTimeout(() => {
+      btn.innerHTML = 'Copy email <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="11" height="8" rx="1.5"/><polyline points="1,3 6.5,8 12,3"/></svg>';
+      btn.style.background = '';
+    }, 2200);
+  });
+}
+
+// Nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+  navLinks.forEach(l => {
+    const active = l.getAttribute('href') === '#' + cur;
+    l.style.background = active ? 'var(--bg2)' : '';
+    l.style.color = active ? 'var(--text)' : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
