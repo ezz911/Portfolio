@@ -225,7 +225,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
       </a>
       <a class="btn-secondary" href="#contact" id="hire-btn">Get in touch</a>
-      <a class="btn-secondary" href="https://www.behance.net" target="_blank">
+      <a class="btn-secondary" href="https://www.behance.net/parasnagda/projects" target="_blank">
         Behance
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1h4l2 3-2 3H1V1z"/><path d="M7 7h4M7 5h4"/><circle cx="9" cy="5" r="2"/></svg>
       </a>
@@ -233,19 +233,19 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">2+</div>
+        <div class="stat-num counter" data-target="2" data-suffix="+">0</div>
         <div class="stat-label">Years experience</div>
       </div>
       <div>
-        <div class="stat-num">5+</div>
+        <div class="stat-num counter" data-target="5" data-suffix="+">0</div>
         <div class="stat-label">Projects delivered</div>
       </div>
       <div>
-        <div class="stat-num">₹13.4L</div>
+        <div class="stat-num counter" data-target="13.4" data-prefix="₹" data-suffix="L">₹0</div>
         <div class="stat-label">Revenue driven for clients</div>
       </div>
       <div>
-        <div class="stat-num">30%</div>
+        <div class="stat-num counter" data-target="30" data-suffix="%">0</div>
         <div class="stat-label">Avg. engagement lift</div>
       </div>
     </div>
@@ -287,7 +287,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
     <div class="projects-list">
 
       <!-- A1 Guard -->
-      <a class="proj-card" href="#" onclick="return false;">
+      <a class="proj-card" href="a1-guard.html">
         <div class="proj-inner">
           <div class="proj-thumb" style="background:#edf0f5;">
             <span class="proj-thumb-emoji">🛡️</span>
@@ -317,7 +317,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
       </a>
 
       <!-- Maulika Sharma -->
-      <a class="proj-card" href="#" onclick="return false;">
+      <a class="proj-card" href="maulika-sharma.html">
         <div class="proj-inner">
           <div class="proj-thumb" style="background:#f0f5ee;">
             <span class="proj-thumb-emoji">💪</span>
@@ -342,7 +342,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
       </a>
 
       <!-- Dr Aryan Mehta -->
-      <a class="proj-card" href="#" onclick="return false;">
+      <a class="proj-card" href="dr-aryan-mehta.html">
         <div class="proj-inner">
           <div class="proj-thumb" style="background:#f0eef8;">
             <span class="proj-thumb-emoji">🫀</span>
@@ -367,7 +367,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
       </a>
 
       <!-- Tatvika -->
-      <a class="proj-card" href="#" onclick="return false;">
+      <a class="proj-card" href="tatvika.html">
         <div class="proj-inner">
           <div class="proj-thumb" style="background:#fdf3e7;">
             <span class="proj-thumb-emoji">✨</span>
@@ -407,13 +407,13 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
     <div class="marketing-grid">
       <div class="m-card">
         <div class="m-icon">📣</div>
-        <div class="m-num">15</div>
+        <div class="m-num counter" data-target="15" data-suffix="">0</div>
         <div class="m-label">Active Meta &amp; Instagram campaigns managed simultaneously</div>
       </div>
       <div class="m-card wide">
         <div class="m-icon">💰</div>
         <div class="m-text">
-          <div class="m-num">₹1,25,926 ad spend → ₹13,42,529 revenue</div>
+          <div class="m-num">₹<span class="counter" data-target="125926" data-suffix="">0</span> ad spend → ₹<span class="counter" data-target="1342529" data-suffix="">0</span> revenue</div>
           <div class="m-label">Managed total Meta ad spend over 3 years across conversions, engagement, reach, and retargeting campaigns — delivering consistent ROI for clients.</div>
         </div>
       </div>
@@ -552,8 +552,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
       </div>
 
       <div class="social-links">
-        <a class="social-link" href="https://www.behance.net" target="_blank">Behance Portfolio</a>
-        <a class="social-link" href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a class="social-link" href="https://www.behance.net/parasnagda/projects" target="_blank">Behance Portfolio</a>
+        <a class="social-link" href="https://www.linkedin.com/in/paras-nagda-8b7a5730b/" target="_blank">LinkedIn</a>
         <a class="social-link" href="https://twitter.com" target="_blank">Twitter / X</a>
       </div>
     </div>
@@ -608,6 +608,50 @@ window.addEventListener('scroll', () => {
     l.style.color = active ? 'var(--text)' : '';
   });
 }, { passive: true });
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const isDecimal = target % 1 !== 0;
+  const duration = 1800;
+  const steps = 60;
+  const increment = target / steps;
+  let current = 0;
+  let step = 0;
+  // format large numbers with commas
+  function format(n) {
+    if (target >= 1000) return Math.round(n).toLocaleString('en-IN');
+    if (isDecimal) return n.toFixed(1);
+    return Math.round(n).toString();
+  }
+  const timer = setInterval(() => {
+    step++;
+    // ease out
+    const progress = step / steps;
+    const ease = 1 - Math.pow(1 - progress, 3);
+    current = target * ease;
+    el.textContent = prefix + format(current) + suffix;
+    if (step >= steps) {
+      el.textContent = prefix + format(target) + suffix;
+      clearInterval(timer);
+    }
+  }, duration / steps);
+}
+
+// Trigger counters when they enter viewport
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = 'true';
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>

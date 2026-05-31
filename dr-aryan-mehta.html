@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Aryan Mehta — Case Study · Paras Nagda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--bg2:#f3f1ec;--bg3:#eae7e0;--white:#ffffff;--border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.13);--text:#1a1814;--text2:#6b6760;--text3:#a8a5a0;--accent:#2d5a3d;--accent-light:#e8f0eb;--accent2:#b87333;--accent2-light:#fdf0e3;--sans:'DM Sans',system-ui,sans-serif;--serif:'Fraunces',Georgia,serif;--sh-sm:0 1px 4px rgba(0,0,0,0.06);--sh-lg:0 16px 48px rgba(0,0,0,0.1)}
+html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--text);text-decoration:none;letter-spacing:-0.02em}.nav-logo span{color:var(--accent);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--text2);text-decoration:none;transition:all .18s;padding:6px 14px;border-radius:100px}.nav-back:hover{background:var(--bg2);color:var(--text)}
+.page{max-width:780px;margin:0 auto;padding:0 28px 100px}
+.cs-hero{padding:64px 0 48px;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) both}
+.cs-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.cs-tag{font-size:11px;font-weight:500;padding:4px 12px;border-radius:100px;background:var(--accent-light);color:var(--accent)}.cs-tag.amber{background:var(--accent2-light);color:var(--accent2)}.cs-tag.blue{background:#e8eef8;color:#4a7fc1}.cs-tag.purple{background:#f0eef8;color:#7c5cbf}
+.cs-title{font-family:var(--serif);font-size:clamp(36px,6vw,56px);font-weight:300;line-height:1.08;letter-spacing:-0.03em;color:var(--text);margin-bottom:20px}.cs-title em{font-style:italic;color:var(--accent)}
+.cs-subtitle{font-size:17px;color:var(--text2);line-height:1.75;max-width:560px;font-weight:300;margin-bottom:40px}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:56px}
+.cs-meta-item{background:var(--white);padding:18px 20px}.cs-meta-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}.cs-meta-value{font-size:14px;font-weight:500;color:var(--text)}
+.cs-cover{width:100%;aspect-ratio:16/8;background:linear-gradient(135deg,#1e1a2e,#2e2a48);border-radius:20px;margin-bottom:64px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);position:relative}
+.cs-cover-emoji{font-size:90px;opacity:.6}.cs-cover-label{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,255,255,.5);background:rgba(0,0,0,.3);padding:6px 14px;border-radius:100px;white-space:nowrap;backdrop-filter:blur(8px)}
+.cs-section{margin-bottom:64px}.cs-eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}.cs-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.cs-sec-title{font-family:var(--serif);font-size:28px;font-weight:300;letter-spacing:-.02em;color:var(--text);margin-bottom:12px;line-height:1.2}.cs-sec-title em{font-style:italic;color:var(--accent)}
+.cs-body{font-size:15px;color:var(--text2);line-height:1.8;font-weight:300}.cs-body p{margin-bottom:14px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}.info-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--sh-sm)}.info-card-icon{font-size:22px;margin-bottom:10px}.info-card-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.info-card-body{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300}
+.process-steps{display:flex;flex-direction:column;margin-top:24px}.process-step{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}.process-step:last-child{border-bottom:none}.step-num{width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0;margin-top:2px}.step-title{font-size:14.5px;font-weight:500;color:var(--text);margin-bottom:5px}.step-body{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300}
+.img-ph{width:100%;border-radius:16px;background:var(--bg2);border:2px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--text3);cursor:pointer;transition:all .2s}.img-ph:hover{background:var(--bg3)}.img-ph svg{width:22px;height:22px;opacity:.45}.img-ph span{font-size:12.5px}.img-ph.tall{aspect-ratio:16/9;margin:24px 0}.img-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}.img-grid-2 .img-ph{aspect-ratio:4/3;margin:0}
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.result-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px 18px;text-align:center;box-shadow:var(--sh-sm)}.result-card.hl{background:var(--text);border-color:var(--text)}.result-num{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--text);letter-spacing:-.02em;margin-bottom:5px}.result-card.hl .result-num{color:white}.result-label{font-size:12px;color:var(--text3);line-height:1.5}.result-card.hl .result-label{color:rgba(255,255,255,.5)}
+.learnings-list{display:flex;flex-direction:column;gap:10px;margin-top:20px}.learning-item{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:12px}.learning-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px}.learning-text{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300}
+.next-proj{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--sh-sm);text-decoration:none;color:inherit;transition:all .25s;margin-top:80px}.next-proj:hover{box-shadow:var(--sh-lg);transform:translateY(-2px)}.next-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}.next-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--text)}.next-arrow{width:44px;height:44px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}.next-proj:hover .next-arrow{background:var(--text);color:white}
+footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.fade-up{opacity:0;animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both}
+@media(max-width:640px){nav{padding:0 16px}.page{padding:0 16px 80px}.cs-meta{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr 1fr}.img-grid-2{grid-template-columns:1fr}.next-proj{flex-direction:column;gap:20px}footer{flex-direction:column;gap:8px;text-align:center}}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}::selection{background:var(--accent-light);color:var(--accent)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Paras<span>.</span></a>
+  <a class="nav-back" href="index.html#projects"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 7H2M6 3L2 7l4 4"/></svg>Back to work</a>
+</nav>
+<div class="page">
+  <div class="cs-hero">
+    <div class="cs-tags"><span class="cs-tag">Medical Web Design</span><span class="cs-tag purple">Lovable</span><span class="cs-tag blue">Trust Design</span></div>
+    <h1 class="cs-title">Dr. Aryan Mehta —<br><em>Cardiology</em> Website</h1>
+    <p class="cs-subtitle">A modern, trust-first medical website designed to convert anxious patients into confident appointments — built on Lovable with clinical credibility and human warmth.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2026</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">UI/UX Designer</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Lovable · Figma</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Focus</div><div class="cs-meta-value">Trust & Conversion</div></div>
+    </div>
+  </div>
+
+  <div class="cs-cover">
+    <span class="cs-cover-emoji">🫀</span>
+    <span class="cs-cover-label">Add your project cover image here</span>
+  </div>
+
+  <div class="cs-section fade-up">
+    <div class="cs-eyebrow">Overview</div>
+    <h2 class="cs-sec-title">The <em>challenge</em></h2>
+    <div class="cs-body">
+      <p>Dr. Aryan Mehta is a cardiologist with 18+ years of experience and 5,000+ procedures to his name. Despite his credentials, patients searching online couldn't find a credible digital presence that reflected his expertise.</p>
+      <p>Medical websites often fail in one of two ways — they feel either too clinical and cold, or too generic and untrustworthy. The goal was to strike the right balance: authoritative but approachable, and fast to navigate for anxious patients.</p>
+    </div>
+    <div class="two-col">
+      <div class="info-card"><div class="info-card-icon">💊</div><div class="info-card-title">The Problem</div><div class="info-card-body">No digital presence reflecting 18+ years of expertise. Patients couldn't find key information — credentials, services, or how to book — quickly enough.</div></div>
+      <div class="info-card"><div class="info-card-icon">✅</div><div class="info-card-title">The Goal</div><div class="info-card-body">Design a trust-first website where patients find what they need in under 3 seconds — and feel confident enough to book an appointment.</div></div>
+    </div>
+  </div>
+
+  <div class="cs-section fade-up">
+    <div class="cs-eyebrow">Process</div>
+    <h2 class="cs-sec-title">How I <em>approached</em> it</h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">1</div><div><div class="step-title">Patient Psychology Research</div><div class="step-body">Researched what anxious patients look for when choosing a cardiologist — credentials, success rates, approachability, and ease of booking. These became the design priorities.</div></div></div>
+      <div class="process-step"><div class="step-num">2</div><div><div class="step-title">Information Architecture</div><div class="step-body">Structured navigation around five patient needs: Services, About, Credentials, Patient Resources, and Contact. Every path leads to a booking action within two clicks.</div></div></div>
+      <div class="process-step"><div class="step-num">3</div><div><div class="step-title">Hero & Trust Signals</div><div class="step-body">Designed a hero section with floating stat cards — 5,000+ procedures, 18+ years experience — to establish credibility immediately above the fold.</div></div></div>
+      <div class="process-step"><div class="step-num">4</div><div><div class="step-title">Visual Language</div><div class="step-body">Applied a purple-and-white palette with strong typographic hierarchy — communicating clinical credibility with warmth. Avoided cold blues and sterile layouts.</div></div></div>
+      <div class="process-step"><div class="step-num">5</div><div><div class="step-title">Build on Lovable</div><div class="step-body">Implemented the design directly in Lovable — a no-code tool that allowed rapid deployment while maintaining design fidelity across all screen sizes.</div></div></div>
+    </div>
+  </div>
+
+  <div class="cs-section fade-up">
+    <div class="cs-eyebrow">Design</div>
+    <h2 class="cs-sec-title">Key <em>screens</em></h2>
+    <div class="img-ph tall" onclick="alert('Add homepage / hero screenshot here')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+      <span>Add homepage screenshot with floating stat cards</span>
+    </div>
+    <div class="img-grid-2">
+      <div class="img-ph" onclick="alert('Add credentials section')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Credentials section</span></div>
+      <div class="img-ph" onclick="alert('Add mobile view')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Mobile view</span></div>
+    </div>
+  </div>
+
+  <div class="cs-section fade-up">
+    <div class="cs-eyebrow">Results</div>
+    <h2 class="cs-sec-title">The <em>outcome</em></h2>
+    <div class="results-grid">
+      <div class="result-card hl"><div class="result-num">&lt; 3s</div><div class="result-label">Time for patients to find key information</div></div>
+      <div class="result-card"><div class="result-num"><span class="counter" data-target="5000" data-suffix="+">0</span></div><div class="result-label">Procedures highlighted with floating stat cards</div></div>
+      <div class="result-card"><div class="result-num"><span class="counter" data-target="5" data-suffix="">0</span></div><div class="result-label">Clear navigation sections for patient needs</div></div>
+    </div>
+  </div>
+
+  <div class="cs-section fade-up">
+    <div class="cs-eyebrow">Learnings</div>
+    <h2 class="cs-sec-title">What I <em>learned</em></h2>
+    <div class="learnings-list">
+      <div class="learning-item"><span class="learning-dot"></span><span class="learning-text">In medical design, trust is the conversion. Every design decision — colour, typography, spacing — needs to answer the question: "does this make the patient feel safe?"</span></div>
+      <div class="learning-item"><span class="learning-dot"></span><span class="learning-text">Floating stat cards above the fold are one of the most effective trust-building patterns for service professionals. Numbers do the work that copy can't.</span></div>
+      <div class="learning-item"><span class="learning-dot"></span><span class="learning-text">No-code tools like Lovable enable rapid deployment without sacrificing design quality — knowing when to use them is part of being a well-rounded designer.</span></div>
+    </div>
+  </div>
+
+  <a class="next-proj" href="tatvika.html">
+    <div><div class="next-label">Next project</div><div class="next-title">Tatvika — Website Redesign →</div></div>
+    <div class="next-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M2 8h12M10 4l4 4-4 4"/></svg></div>
+  </a>
+</div>
+<footer><span>© 2025 Paras Nagda · UI/UX Designer</span><a href="index.html" style="color:var(--text3);text-decoration:none">← Back to portfolio</a></footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.style.animation='fadeUp .65s cubic-bezier(.22,1,.36,1) both';obs.unobserve(el.target)}})},{threshold:.08});
+document.querySelectorAll('.fade-up').forEach(el=>{el.style.animation='none';obs.observe(el)});
+function animateCounter(el){const target=parseFloat(el.dataset.target);const prefix=el.dataset.prefix||'';const suffix=el.dataset.suffix||'';const isDecimal=target%1!==0;const steps=60;function format(n){if(target>=1000)return Math.round(n).toLocaleString('en-IN');if(isDecimal)return n.toFixed(1);return Math.round(n).toString();}let step=0;const timer=setInterval(()=>{step++;const ease=1-Math.pow(1-step/steps,3);const current=target*ease;el.textContent=prefix+format(current)+suffix;if(step>=steps){el.textContent=prefix+format(target)+suffix;clearInterval(timer);}},1800/steps);}
+const cObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.counted){e.target.dataset.counted='true';animateCounter(e.target);cObs.unobserve(e.target);}});},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>
