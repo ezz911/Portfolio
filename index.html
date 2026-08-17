@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paras Nagda — UI/UX Designer</title>
+<meta name="description" content="Paras Nagda — UI/UX Designer &amp; performance marketer based in Mumbai. Design that works, marketing that sells. View case studies for A1 Guard, Maulika Sharma, Dr. Aryan Mehta, and Tatvika.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
   --border2:rgba(0,0,0,0.13);
   --text:#1a1814;
   --text2:#6b6760;
-  --text3:#a8a5a0;
+  --text3:#6f6b64;
   --accent:#2d5a3d;
   --accent-light:#e8f0eb;
   --accent2:#b87333;
@@ -37,10 +38,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 .nav-logo{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--text);text-decoration:none;letter-spacing:-0.02em}
 .nav-logo span{color:var(--accent);font-style:italic}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-link{padding:6px 14px;border-radius:100px;font-size:13.5px;color:var(--text2);text-decoration:none;transition:all .18s;font-weight:400}
+.nav-link{padding:6px 14px;border-radius:100px;font-size:13.5px;color:var(--text2);text-decoration:none;transition:background-color .18s ease,color .18s ease;font-weight:400}
 .nav-link:hover{background:var(--bg2);color:var(--text)}
-.nav-cta{padding:8px 20px;border-radius:100px;background:var(--text);color:var(--white);font-size:13.5px;font-weight:500;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:var(--sans);margin-left:6px}
+.nav-cta{padding:8px 20px;border-radius:100px;background:var(--text);color:var(--white);font-size:13.5px;font-weight:500;text-decoration:none;transition:background-color .2s ease-out,transform .2s ease-out,box-shadow .2s ease-out;border:none;cursor:pointer;font-family:var(--sans);margin-left:6px}
 .nav-cta:hover{background:var(--accent);transform:translateY(-1px);box-shadow:var(--sh-md)}
+.nav-burger{display:none;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border2);background:var(--white);color:var(--text);cursor:pointer}
+.nav-burger svg{width:19px;height:19px}
 
 /* PAGE */
 .page{max-width:780px;margin:0 auto;padding:0 28px 100px}
@@ -56,9 +59,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 .hero-bio{font-size:16.5px;color:var(--text2);line-height:1.75;max-width:540px;margin-bottom:36px;font-weight:300}
 .hero-bio strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--text);color:var(--white);border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);transition:all .2s;box-shadow:var(--sh-sm)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--text);color:var(--white);border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);transition:background-color .2s ease-out,transform .16s ease-out,box-shadow .2s ease-out;box-shadow:var(--sh-sm)}
 .btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:var(--sh-md)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--white);color:var(--text);border-radius:100px;font-size:14px;font-weight:400;text-decoration:none;border:1px solid var(--border2);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--white);color:var(--text);border-radius:100px;font-size:14px;font-weight:400;text-decoration:none;border:1px solid var(--border2);cursor:pointer;font-family:var(--sans);transition:border-color .2s ease-out,transform .16s ease-out,box-shadow .2s ease-out}
 .btn-secondary:hover{border-color:var(--text);transform:translateY(-1px);box-shadow:var(--sh-sm)}
 .hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:36px;border-top:1px solid var(--border);flex-wrap:wrap}
 .stat-num{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--text);letter-spacing:-0.02em;line-height:1;margin-bottom:5px}
@@ -74,7 +77,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 
 /* SKILLS */
 .skills-wrap{display:flex;flex-wrap:wrap;gap:8px}
-.skill-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;background:var(--white);border:1px solid var(--border2);border-radius:100px;font-size:13px;color:var(--text2);font-weight:400;transition:all .2s;cursor:default}
+.skill-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;background:var(--white);border:1px solid var(--border2);border-radius:100px;font-size:13px;color:var(--text2);font-weight:400;transition:border-color .2s ease-out,color .2s ease-out,background-color .2s ease-out,transform .2s ease-out,box-shadow .2s ease-out;cursor:default}
 .skill-pill:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateY(-1px);box-shadow:var(--sh-sm)}
 .pill-dot{width:5px;height:5px;border-radius:50%;background:var(--accent2);flex-shrink:0}
 .pill-dot.blue{background:#4a7fc1}
@@ -82,7 +85,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 
 /* PROJECTS */
 .projects-list{display:flex;flex-direction:column;gap:16px}
-.proj-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;color:inherit;display:block;box-shadow:var(--sh-sm)}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color .25s ease-out,box-shadow .25s ease-out,transform .16s ease-out;cursor:pointer;text-decoration:none;color:inherit;display:block;box-shadow:var(--sh-sm)}
 .proj-card:hover{border-color:var(--border2);box-shadow:var(--sh-lg);transform:translateY(-3px)}
 .proj-inner{display:grid;grid-template-columns:240px 1fr}
 .proj-thumb{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:56px;transition:transform .3s;min-height:180px;position:relative;overflow:hidden}
@@ -98,13 +101,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 .proj-result{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);padding:4px 10px;border-radius:100px;margin-bottom:18px}
 .proj-footer{display:flex;align-items:center;justify-content:space-between}
 .proj-year{font-size:12px;color:var(--text3)}
-.proj-arrow{width:34px;height:34px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.proj-arrow{width:34px;height:34px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;transition:background-color .2s ease-out,color .2s ease-out;flex-shrink:0}
 .proj-card:hover .proj-arrow{background:var(--text);color:white}
 .proj-arrow svg{width:14px;height:14px}
 
 /* MARKETING SECTION */
 .marketing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.m-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--sh-sm);transition:all .2s}
+.m-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--sh-sm);transition:box-shadow .2s ease-out,border-color .2s ease-out}
 .m-card:hover{box-shadow:var(--sh-md);border-color:var(--border2)}
 .m-icon{font-size:22px;margin-bottom:10px}
 .m-num{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--text);letter-spacing:-.02em;margin-bottom:4px}
@@ -115,7 +118,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 
 /* TESTIMONIALS */
 .t-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.t-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm);transition:all .2s}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm);transition:box-shadow .2s ease-out,border-color .2s ease-out}
 .t-card:hover{box-shadow:var(--sh-md);border-color:var(--border2)}
 .t-card.feat{background:var(--text);border-color:var(--text);grid-column:1/-1}
 .stars{display:flex;gap:3px;margin-bottom:14px}
@@ -153,7 +156,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop
 .contact-sub{font-size:15px;color:var(--text2);max-width:400px;margin:0 auto 32px;font-weight:300;line-height:1.7}
 .contact-actions{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px;position:relative;z-index:1}
 .social-links{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
-.social-link{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;border:1px solid var(--border2);font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;background:var(--bg)}
+.social-link{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:100px;border:1px solid var(--border2);font-size:13px;color:var(--text2);text-decoration:none;transition:border-color .2s ease-out,color .2s ease-out,background-color .2s ease-out,transform .2s ease-out,box-shadow .2s ease-out;background:var(--bg)}
 .social-link:hover{border-color:var(--text);color:var(--text);background:var(--white);transform:translateY(-1px);box-shadow:var(--sh-sm)}
 
 /* FOOTER */
@@ -167,7 +170,11 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
 /* RESPONSIVE */
 @media(max-width:640px){
   nav{padding:0 16px}
-  .nav-links .nav-link{display:none}
+  .nav-burger{display:flex}
+  .nav-links{position:fixed;top:58px;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:var(--white);border-bottom:1px solid var(--border);padding:10px 16px 16px;box-shadow:var(--sh-md);max-height:0;overflow:hidden;visibility:hidden;transition:max-height .25s ease}
+  .nav-links.open{max-height:320px;visibility:visible}
+  .nav-links .nav-link{display:block;padding:12px 10px;border-radius:10px}
+  .nav-links .nav-cta{margin:8px 0 0;text-align:center}
   .page{padding:0 16px 80px}
   .hero{padding:48px 0 44px}
   .hero-name{font-size:40px}
@@ -185,6 +192,17 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
 ::selection{background:var(--accent-light);color:var(--accent)}
+
+/* --- design-pass additions: press feedback, reduced motion, touch hover-gate --- */
+.nav-cta:active,.btn-primary:active,.btn-secondary:active,.social-link:active{transform:scale(.97)}
+.proj-card:active{transform:scale(.99)}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .fade-up{opacity:1!important}
+}
+@media (hover:none){
+  .nav-link:hover,.nav-cta:hover,.btn-primary:hover,.btn-secondary:hover,.skill-pill:hover,.proj-card:hover,.social-link:hover{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -192,7 +210,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Paras<span>.</span></a>
-  <div class="nav-links">
+  <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5h16M2 10h16M2 15h16"/></svg>
+  </button>
+  <div class="nav-links" id="nav-links">
     <a class="nav-link" href="#skills">Skills</a>
     <a class="nav-link" href="#projects">Work</a>
     <a class="nav-link" href="#experience">Experience</a>
@@ -554,7 +575,6 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
       <div class="social-links">
         <a class="social-link" href="https://www.behance.net/parasnagda/projects" target="_blank">Behance Portfolio</a>
         <a class="social-link" href="https://www.linkedin.com/in/paras-nagda-8b7a5730b/" target="_blank">LinkedIn</a>
-        <a class="social-link" href="https://twitter.com" target="_blank">Twitter / X</a>
       </div>
     </div>
   </section>
@@ -563,7 +583,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;max-width:780px;marg
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2025 Paras Nagda · UI/UX Designer · Mumbai</span>
+  <span>© 2026 Paras Nagda · UI/UX Designer · Mumbai</span>
   <span>parasnagda911@gmail.com</span>
 </footer>
 
@@ -594,6 +614,20 @@ function copyMail() {
       btn.style.background = '';
     }, 2200);
   });
+}
+
+// Mobile nav toggle
+const burger = document.getElementById('nav-burger');
+const navLinksWrap = document.getElementById('nav-links');
+if (burger && navLinksWrap) {
+  burger.addEventListener('click', () => {
+    const open = navLinksWrap.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinksWrap.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinksWrap.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
 }
 
 // Nav highlight on scroll
