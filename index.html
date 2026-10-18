@@ -210,39 +210,12 @@ html.is-loading{overflow:hidden}
 .loader::after{content:'';position:absolute;left:0;right:0;top:100%;height:9vw;background:#f1f0f0;border-radius:0 0 50% 50%/0 0 100% 100%}
 .loader.is-done{transform:translateY(calc(-100% - 9vw))}
 .loader.is-gone{display:none}
-.ld-note{position:absolute;background:#fff;padding:18px 20px;width:clamp(150px,17vw,230px);aspect-ratio:1;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;font-size:clamp(11px,1.15vw,15px);line-height:1.3;letter-spacing:.01em;text-transform:uppercase;color:#6a6a6a;box-shadow:0 1px 2px rgba(0,0,0,.04);opacity:0;transition:opacity .5s ease-out,transform .6s cubic-bezier(.22,1,.36,1)}
-.ld-note p+p{margin-top:1.1em}
-.ld-note svg{display:inline-block;width:1.2em;height:1.2em;vertical-align:-.2em;fill:#666}
-.ld-note-a{top:9%;right:9%;transform:rotate(-12deg) translateY(16px)}
-.ld-note-b{bottom:7%;left:9%;transform:rotate(9deg) translateY(16px)}
-.ld-card{position:absolute;background:#fff;border-radius:22px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.03);opacity:0;transition:opacity .5s ease-out,transform .6s cubic-bezier(.22,1,.36,1)}
-.ld-card-head{display:flex;justify-content:space-between;align-items:center;font-size:14px;letter-spacing:.01em;text-transform:uppercase;color:#4a4a4a}
-.ld-dots{display:flex;gap:5px}
-.ld-dots i{width:15px;height:15px;border-radius:50%;background:#efefef}
-.ld-main{top:50%;left:50%;width:min(544px,calc(100vw - 32px));transform:translate(-50%,-46%);padding-bottom:20px}
-.ld-bar{display:grid;grid-template-columns:repeat(10,1fr);gap:10px;margin:30px 0 22px;padding:10px;background:#f7f7f7;border-radius:12px}
-.ld-bar i{aspect-ratio:1;border-radius:7px;background:#efefef;transition:background-color .18s ease-out,transform .18s ease-out}
-.ld-bar i.on{background:#555}
-.ld-pct{text-align:right;font-size:20px;font-variant-numeric:tabular-nums;color:#4a4a4a}
-.ld-info{right:9%;bottom:10%;width:clamp(260px,22vw,435px);transform:translateY(16px)}
-.ld-info p{margin-top:26px;font-size:16px;line-height:1.7;color:#c3c3c3}
-.ld-ready .ld-note-a{opacity:1;transform:rotate(-12deg)}
-.ld-ready .ld-note-b{opacity:1;transform:rotate(9deg);transition-delay:.12s}
-.ld-ready .ld-main{opacity:1;transform:translate(-50%,-50%)}
-.ld-ready .ld-info{opacity:1;transform:none;transition-delay:.24s}
-.ld-greeting .ld-note,.ld-greeting .ld-card{opacity:0;transition:opacity .35s ease-in}
 .ld-greet{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans Devanagari','Noto Sans Gujarati',sans-serif;font-weight:700;font-size:clamp(44px,6vw,88px);letter-spacing:-.05em;color:#4a4a4a;opacity:0;pointer-events:none;transition:opacity .25s ease-out}
-.ld-greeting .ld-greet{opacity:1;transition-delay:.2s}
+.ld-greeting .ld-greet{opacity:1}
 .ld-reveal .ld-greet{opacity:0;transition-delay:0s}
 .ld-hello{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:clamp(11px,1.3vw,16px);letter-spacing:.08em;color:#c8c8c8;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .4s ease-out}
 .ld-reveal .ld-hello{opacity:1;transition-delay:.25s}
 .ld-hello canvas{width:min(420px,78vw);height:auto;aspect-ratio:var(--ar)}
-@media (max-width:640px){
-  .ld-note{padding:12px 14px}
-  .ld-note-a{top:6%;right:6%}.ld-note-b{bottom:5%;left:5%}
-  .ld-info{display:none}
-  .ld-bar{gap:6px;padding:8px}
-}
 @media (prefers-reduced-motion:reduce){.loader{display:none}html.is-loading{overflow:auto}}
 </style>
 </head>
@@ -250,22 +223,6 @@ html.is-loading{overflow:hidden}
 
 <!-- LOADING SCREEN -->
 <div class="loader" id="loader" role="status" aria-live="polite" aria-label="Loading portfolio">
-  <div class="ld-note ld-note-a" aria-hidden="true">
-    <p>Portfolio, <br>case studies,<br>great UI/UX</p>
-  </div>
-  <div class="ld-note ld-note-b" aria-hidden="true">
-    <p>With <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.1 2.9 4.5 6.4 4.5c2.1 0 3.7 1.1 5.6 3.3 1.9-2.2 3.5-3.3 5.6-3.3 3.5 0 5.5 3.6 4 7.2C19.500 16.400 12 21 12 21z"/></svg> from<br>Mumbai,<br>India</p>
-    <p>Portfolio<br>2026</p>
-  </div>
-  <div class="ld-card ld-main">
-    <div class="ld-card-head"><span>Loader</span><span class="ld-dots"><i></i><i></i></span></div>
-    <div class="ld-bar" id="ldBar" aria-hidden="true"></div>
-    <div class="ld-pct" id="ldPct">0%</div>
-  </div>
-  <div class="ld-card ld-info" aria-hidden="true">
-    <div class="ld-card-head"><span>Useful info</span><span class="ld-dots"><i></i><i></i></span></div>
-    <p>UI/UX designer &amp; performance marketer. Design that works, marketing that sells. Four case studies, one scroll away.</p>
-  </div>
   <div class="ld-greet" id="ldGreet" aria-hidden="true">Hello</div>
   <div class="ld-hello" aria-hidden="true">
     <span>Hi, I'm</span>
@@ -280,10 +237,6 @@ html.is-loading{overflow:hidden}
   try{seen=sessionStorage.getItem('pn-loaded')==='1'}catch(e){}
   if(seen||window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.className='loader is-gone';return}
   root.classList.add('is-loading');
-
-  var bar=document.getElementById('ldBar'),pct=document.getElementById('ldPct'),cells=[],i;
-  for(i=0;i<10;i++){var c=document.createElement('i');bar.appendChild(c);cells.push(c)}
-  requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('ld-ready')})});
 
   // 5x7 dot-matrix glyphs
   var G={
@@ -318,23 +271,10 @@ html.is-loading{overflow:hidden}
     return alive;
   }
 
-  var start=performance.now(),dur=1800,val=0,loaded=document.readyState==='complete';
-  window.addEventListener('load',function(){loaded=true});
-  function setVal(v){
-    val=v;pct.textContent=v+'%';
-    var n=Math.floor(v/10);
-    cells.forEach(function(c,j){c.classList.toggle('on',j<n)});
-  }
-  function tick(now){
-    var p=Math.min(1,(now-start)/dur),e=1-Math.pow(1-p,2.2);
-    var v=Math.round(e*100);
-    if(!loaded)v=Math.min(v,90);
-    if(v>val)setVal(v);
-    if(val<100)return requestAnimationFrame(tick);
-    setTimeout(reveal,350);
-  }
   var words=['नमस्ते','Hello','नमस्कार','નમસ્તે','Bonjour','Hola','Hello'],greet=document.getElementById('ldGreet');
+  var started=false;
   function reveal(){
+    if(started)return;started=true;
     el.classList.add('ld-greeting');
     var w=0,fam=getComputedStyle(greet).fontFamily;
     var ready=document.fonts?Promise.race([Promise.all(words.map(function(t){return document.fonts.load('700 48px '+fam,t)})),new Promise(function(r){setTimeout(r,1500)})]):Promise.resolve();
@@ -356,7 +296,8 @@ html.is-loading{overflow:hidden}
       setTimeout(function(){el.classList.add('is-gone')},950);
     },1300);
   }
-  requestAnimationFrame(tick);
+  if(document.readyState==='complete')reveal();
+  else{window.addEventListener('load',reveal);setTimeout(reveal,2500)}
 })();
 </script>
 
