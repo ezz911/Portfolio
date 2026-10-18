@@ -333,7 +333,7 @@ html.is-loading{overflow:hidden}
     if(val<100)return requestAnimationFrame(tick);
     setTimeout(reveal,350);
   }
-  var words=['नमस्ते','Hello','नमस्कार','નમસ્તે','Hello'],greet=document.getElementById('ldGreet');
+  var words=['नमस्ते','Hello','नमस्कार','નમસ્તે','Bonjour','Hola','Hello'],greet=document.getElementById('ldGreet');
   function reveal(){
     el.classList.add('ld-greeting');
     var w=0,fam=getComputedStyle(greet).fontFamily;
@@ -341,7 +341,7 @@ html.is-loading{overflow:hidden}
     ready.then(function(){setTimeout(function cycle(){
       greet.textContent=words[w];
       greet.style.letterSpacing=/^[\x00-\x7F]+$/.test(words[w])?'':'0';
-      if(++w<words.length)return setTimeout(cycle,320);
+      if(++w<words.length)return setTimeout(cycle,280);
       setTimeout(dotName,380);
     },250)});
   }
