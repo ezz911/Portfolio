@@ -7,7 +7,7 @@
 <meta name="description" content="Paras Nagda — UI/UX Designer &amp; performance marketer based in Mumbai. Design that works, marketing that sells. View case studies for A1 Guard, Maulika Sharma, Dr. Aryan Mehta, and Tatvika.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@700&family=Noto+Sans+Bengali:wght@700&family=Noto+Sans+Telugu:wght@700&family=Noto+Sans+Tamil:wght@700&family=Noto+Sans+Gujarati:wght@700&family=Noto+Sans+Kannada:wght@700&family=Noto+Sans+Oriya:wght@700&family=Noto+Sans+Malayalam:wght@700&family=Noto+Sans+Gurmukhi:wght@700&family=Noto+Sans+Arabic:wght@700&family=Noto+Sans+Ol+Chiki:wght@700&family=Noto+Sans+Meetei+Mayek:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@500&family=Noto+Sans+Devanagari:wght@700&family=Noto+Sans+Gujarati:wght@700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -231,7 +231,7 @@ html.is-loading{overflow:hidden}
 .ld-ready .ld-main{opacity:1;transform:translate(-50%,-50%)}
 .ld-ready .ld-info{opacity:1;transform:none;transition-delay:.24s}
 .ld-greeting .ld-note,.ld-greeting .ld-card{opacity:0;transition:opacity .35s ease-in}
-.ld-greet{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans Devanagari','Noto Sans Bengali','Noto Sans Telugu','Noto Sans Tamil','Noto Sans Gujarati','Noto Sans Kannada','Noto Sans Oriya','Noto Sans Malayalam','Noto Sans Gurmukhi','Noto Sans Arabic','Noto Sans Ol Chiki','Noto Sans Meetei Mayek',sans-serif;font-weight:700;font-size:clamp(44px,6vw,88px);letter-spacing:-.05em;color:#4a4a4a;opacity:0;pointer-events:none;transition:opacity .25s ease-out}
+.ld-greet{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans Devanagari','Noto Sans Gujarati',sans-serif;font-weight:700;font-size:clamp(44px,6vw,88px);letter-spacing:-.05em;color:#4a4a4a;opacity:0;pointer-events:none;transition:opacity .25s ease-out}
 .ld-greeting .ld-greet{opacity:1;transition-delay:.2s}
 .ld-reveal .ld-greet{opacity:0;transition-delay:0s}
 .ld-hello{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:clamp(11px,1.3vw,16px);letter-spacing:.08em;color:#c8c8c8;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .4s ease-out}
@@ -333,7 +333,7 @@ html.is-loading{overflow:hidden}
     if(val<100)return requestAnimationFrame(tick);
     setTimeout(reveal,350);
   }
-  var words=['Hello','नमस्ते','নমস্কার','नमस्कार','నమస్కారం','வணக்கம்','નમસ્તે','السلام علیکم','ನಮಸ್ಕಾರ','ନମସ୍କାର','നമസ്കാരം','ਸਤ ਸ੍ਰੀ ਅਕਾਲ','নমস্কাৰ','प्रणाम','नमो नमः','آداب','سلام','ᱡᱚᱦᱟᱨ','ꯈꯨꯔꯨꯝꯖꯔꯤ','Hello'],greet=document.getElementById('ldGreet');
+  var words=['नमस्ते','Hello','नमस्कार','નમસ્તે','Hello'],greet=document.getElementById('ldGreet');
   function reveal(){
     el.classList.add('ld-greeting');
     var w=0,fam=getComputedStyle(greet).fontFamily;
@@ -341,7 +341,7 @@ html.is-loading{overflow:hidden}
     ready.then(function(){setTimeout(function cycle(){
       greet.textContent=words[w];
       greet.style.letterSpacing=/^[\x00-\x7F]+$/.test(words[w])?'':'0';
-      if(++w<words.length)return setTimeout(cycle,120);
+      if(++w<words.length)return setTimeout(cycle,320);
       setTimeout(dotName,380);
     },250)});
   }
