@@ -1059,7 +1059,7 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
   var $=function(id){return document.getElementById(id)};
   var NS='http://www.w3.org/2000/svg';
   var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var SPEED=reduce?0.25:1;
+  var SPEED=reduce?0.5:1;
   var wrap=$('chillWrap'),btn=$('chillBtn'),status=$('chillStatus');
   var lbl=btn.querySelector('.lbl'),ic=btn.querySelector('.ic');
 
@@ -1197,6 +1197,8 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
       var AC=window.AudioContext||window.webkitAudioContext;
       if(!AC)return;
       ctx=new AC();
+      ctx.resume();
+      var unlock=ctx.createBufferSource();unlock.buffer=ctx.createBuffer(1,1,22050);unlock.connect(ctx.destination);unlock.start(0);
       master=ctx.createGain();master.gain.value=0;
       var comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);
       bus=ctx.createBiquadFilter();bus.type='lowpass';bus.frequency.value=3200;bus.connect(master);
@@ -1252,6 +1254,7 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     return {
       start:function(){
         init();if(!ctx)return;
+        ctx.resume();
         var now=ctx.currentTime;
         step=0;next=now+.08;
         master.gain.cancelScheduledValues(now);master.gain.setValueAtTime(master.gain.value,now);
@@ -1338,9 +1341,18 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     status.textContent='Music stopped.';
   }
 
+  function recover(err){
+    if(window.console)console.error('Press play failed:',err);
+    audio.stop();playing=false;busy=false;holding=false;nodding=false;onPlatter=false;spin=0;
+    clearInterval(noteTimer);wrap.classList.remove('is-playing');
+    walker.setAttribute('display','none');sitG.removeAttribute('display');
+    sitBob.removeAttribute('transform');D.o=0;drawDisc();arm.a=40;drawArm();
+    ui('Try again','▶',false,false);
+    status.textContent='Something went wrong. Press play to try again.';
+  }
   btn.addEventListener('click',function(){
     if(busy)return;
-    if(playing)stop();else play();
+    (playing?stop():play()).catch(recover);
   });
 })();
 </script>
