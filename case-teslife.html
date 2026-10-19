@@ -18,7 +18,7 @@
 --sans:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;--serif:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;--mono:'GT America Mono','Geist Mono',ui-monospace,Menlo,Arial,monospace}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--bg2:#1c1b19;--bg3:#2a2926;--white:#1d1c1a;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);--text:#f2efe9;--text2:#a6a199;--text3:#8d8880;--accent:#7dc196;--accent-light:rgba(125,193,150,.13);--nav-bg:rgba(20,20,19,.85);--sh-sm:0 1px 4px rgba(0,0,0,.4);--sh-md:0 10px 30px rgba(0,0,0,.45)}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:var(--serif);font-size:24px;text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent);font-style:italic}
@@ -50,22 +50,27 @@ nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:b
 .pn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .pn a{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:28px 32px;text-decoration:none;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s;display:block}.pn a:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}.pn a:active{transform:scale(.99)}.pn small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}.pn strong{display:block;font-family:var(--serif);font-weight:400;font-size:30px;margin-top:6px}.pn a.next{text-align:right}
 footer{border-top:1px solid var(--border);padding:32px 60px;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;font-size:13.5px;color:var(--text3)}
+h1,h2,h3,.cs-title,.cs-sec-title,.stat b,.pn strong{font-weight:600}h1 em,h2 em,.cs-title em,.cs-sec-title em,.nav-logo span{font-style:normal}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.fade-up{opacity:0}
 ::selection{background:var(--accent-light);color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:900px){nav{padding:0 20px}.page{padding:0 20px 80px}footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center}.cs-hero{padding:44px 0 32px}.cs-meta,.stats{grid-template-columns:1fr 1fr}.feats,.gallery,.pn{grid-template-columns:1fr}.pn a.next{text-align:left}.cs-section{margin-bottom:56px}.mobile{padding:22px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fade-up{opacity:1!important}}
 
-/* display face (no italic) has no italic: keep accent words upright, heavier headlines */
-h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:500}
-h1 em,h2 em,h3 em,.hero-name em,.cs-title em,.sec-title em,.cs-sec-title em,.contact-title em,.ld-name em,.nav-logo span{font-style:normal}
-.eyebrow,.cs-eyebrow,.cs-tag,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker,.cs-meta-label,.pn small{font-family:var(--mono);font-weight:300}
-
 /* display look: tall high-contrast serif caps, emphasis words in bold grotesk (Signal-A reference) */
 .hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name{font-family:'Instrument Serif','Times New Roman',serif;font-weight:400;text-transform:uppercase;letter-spacing:-0.01em;line-height:.95}
 .hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--sans);font-weight:700;font-style:normal;letter-spacing:-0.04em}
 .hero-name{font-size:clamp(56px,10vw,150px)!important}
 .sec-title,.cs-sec-title{font-size:clamp(40px,6vw,84px)}
+
+/* typography refinement */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;font-synthesis:none;font-kerning:normal}
+h1,h2,h3,.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title{text-wrap:balance;font-kerning:normal}
+p,.cs-body,.hero-bio,.sec-sub,.cs-subtitle,.feat p,.note span{text-wrap:pretty}
+.stat-num,.stat b,.counter,.cs-meta-value,.mp-times{font-variant-numeric:lining-nums tabular-nums}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-size:12px;line-height:1.2;letter-spacing:.08em;text-transform:uppercase}
+.hero-bio,.cs-body{line-height:1.6}
 </style>
 </head>
 <body>
