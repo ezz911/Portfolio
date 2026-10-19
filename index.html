@@ -7,7 +7,7 @@
 <meta name="description" content="Paras Nagda — UI/UX Designer &amp; performance marketer based in Mumbai. Design that works, marketing that sells. View case studies for A1 Guard, Maulika Sharma, Dr. Aryan Mehta, and Tatvika.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400..700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400&family=Noto+Serif+Gujarati:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@300;400&family=Noto+Serif+Devanagari:wght@400&family=Noto+Serif+Gujarati:wght@400&display=swap" rel="stylesheet">
 <script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -25,15 +25,15 @@
   --accent-light:#e8f0eb;
   --accent2:#b87333;
   --accent2-light:#fdf0e3;
-  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --serif:'Syne','Helvetica Neue',Arial,sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --sans:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;
+  --serif:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;
+  --mono:'GT America Mono','Geist Mono',ui-monospace,Menlo,Arial,monospace;
   --sh-sm:0 1px 4px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
   --sh-md:0 4px 20px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
   --sh-lg:0 16px 48px rgba(0,0,0,0.1),0 4px 12px rgba(0,0,0,0.05);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:var(--nav-bg,rgba(250,249,247,0.88));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between}
@@ -58,7 +58,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--nav-bg,rgba(250,249,247,0
 .hero-name{font-family:var(--serif);font-size:clamp(50px,9.4vw,86px);font-weight:400;line-height:1;letter-spacing:-0.025em;color:var(--text);margin-bottom:22px}
 .hero-name em{font-style:italic;color:var(--accent)}
 .hero-name .muted{color:var(--text3)}
-@media(min-width:900px){.hero-name{font-size:clamp(64px,6.6vw,100px);line-height:.98;letter-spacing:-0.03em;width:max-content;max-width:calc(100vw - 80px)}.stat-num{font-size:48px}.hero-stats{gap:56px}}
+@media(min-width:900px){.hero-name{width:calc(100vw - 80px);max-width:1500px;margin-left:calc(50% - 50vw + 40px)}.stat-num{font-size:48px}.hero-stats{gap:56px}}
 .hero-bio{font-size:16.5px;color:var(--text2);line-height:1.75;max-width:540px;margin-bottom:36px;font-weight:400}
 .hero-bio strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -456,9 +456,16 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 .gf-fallback{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .gf-fallback a{display:inline-block;padding:7px 15px;border:1px solid var(--border2);border-radius:100px;color:var(--text2);text-decoration:none;font-size:13px}
 
-/* display face (Syne) has no italic: keep accent words upright, heavier headlines */
-h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:600}
+/* display face (no italic) has no italic: keep accent words upright, heavier headlines */
+h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:500}
 h1 em,h2 em,h3 em,.hero-name em,.cs-title em,.sec-title em,.cs-sec-title em,.contact-title em,.ld-name em,.nav-logo span{font-style:normal}
+.eyebrow,.cs-eyebrow,.cs-tag,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker,.cs-meta-label,.pn small{font-family:var(--mono);font-weight:300}
+
+/* display look: tall high-contrast serif caps, emphasis words in bold grotesk (Signal-A reference) */
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name{font-family:'Instrument Serif','Times New Roman',serif;font-weight:400;text-transform:uppercase;letter-spacing:-0.01em;line-height:.95}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--sans);font-weight:700;font-style:normal;letter-spacing:-0.04em}
+.hero-name{font-size:clamp(56px,8.2vw,128px)!important}
+.sec-title,.cs-sec-title{font-size:clamp(40px,6vw,84px)}
 </style>
 </head>
 <body>
