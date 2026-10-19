@@ -54,6 +54,15 @@ h1,h2,h3,.cs-title,.cs-sec-title,.stat b,.pn strong{font-weight:600}h1 em,h2 em,
 .hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--sans);font-weight:700;font-style:normal;letter-spacing:-0.04em}
 .hero-name{font-size:clamp(56px,10vw,150px)!important}
 .sec-title,.cs-sec-title{font-size:clamp(40px,6vw,84px)}
+
+/* typography refinement */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;font-synthesis:none;font-kerning:normal}
+h1,h2,h3,.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title{text-wrap:balance;font-kerning:normal}
+p,.cs-body,.hero-bio,.sec-sub,.cs-subtitle,.feat p,.note span{text-wrap:pretty}
+.stat-num,.stat b,.counter,.cs-meta-value,.mp-times{font-variant-numeric:lining-nums tabular-nums}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-size:12px;line-height:1.2;letter-spacing:.08em;text-transform:uppercase}
+.hero-bio,.cs-body{line-height:1.6}
 """
 
 def page(i, p):
