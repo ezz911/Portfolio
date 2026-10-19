@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teslife — Case Study · Paras Nagda</title>
+<meta name="description" content="An app-style website and booking system for a Tesla wrap, protection and parts shop in Vaughan, Ontario. The home page is a configurator: pick your Tesla, tap a wrap colour and the car repaints.">
+<meta property="og:title" content="Teslife — Case Study · Paras Nagda">
+<meta property="og:description" content="An app-style website and booking system for a Tesla wrap, protection and parts shop in Vaughan, Ontario. The home page is a configurator: pick your Tesla, tap a wrap colour and the car repaints.">
+<meta property="og:image" content="assets/projects/teslife/cover.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--bg2:#f3f1ec;--bg3:#eae7e0;--white:#fff;--border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.13);--text:#1a1814;--text2:#5f5b54;--text3:#6f6b64;--accent:#2d5a3d;--accent-light:#e8f0eb;--nav-bg:rgba(250,249,247,.9);--sh-sm:0 1px 4px rgba(0,0,0,.05);--sh-md:0 10px 30px rgba(0,0,0,.08);
+--sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--serif:'Instrument Serif','Iowan Old Style',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--bg2:#1c1b19;--bg3:#2a2926;--white:#1d1c1a;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);--text:#f2efe9;--text2:#a6a199;--text3:#8d8880;--accent:#7dc196;--accent-light:rgba(125,193,150,.13);--nav-bg:rgba(20,20,19,.85);--sh-sm:0 1px 4px rgba(0,0,0,.4);--sh-md:0 10px 30px rgba(0,0,0,.45)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:24px;text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:100px;border:1px solid var(--border);transition:background-color .18s,color .18s}
+.nav-back:hover{background:var(--bg2);color:var(--text)}.nav-back svg{width:14px;height:14px}
+.page{max-width:1080px;margin:0 auto;padding:0 60px 120px}
+.cs-hero{padding:72px 0 48px}
+.cs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.cs-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:var(--accent-light);color:var(--accent)}
+.cs-title{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,92px);line-height:1;letter-spacing:-.02em;margin-bottom:24px}.cs-title em{color:var(--accent)}
+.cs-subtitle{font-size:19px;color:var(--text2);line-height:1.7;max-width:660px;margin-bottom:40px}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:40px}
+.cs-meta-item{background:var(--white);padding:20px 24px}.cs-meta-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}.cs-meta-value{font-size:15px;font-weight:500}
+.cs-visit{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:100px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:500;font-size:15px;transition:transform .18s}.cs-visit:hover{transform:translateY(-2px)}.cs-visit:active{transform:scale(.97)}
+.cs-cover{margin:48px 0 80px;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh-md);background:var(--bg2)}.cs-cover img{display:block;width:100%;height:auto}
+.cs-cover.art{aspect-ratio:16/7;display:grid;place-items:center;background:linear-gradient(135deg,#1b2b22,#3d2e14);color:#f2efe9}.cs-cover.art span{font-family:var(--serif);font-size:clamp(40px,7vw,96px)}
+.cs-section{margin-bottom:80px}
+.cs-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}.cs-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.cs-sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);letter-spacing:-.01em;line-height:1.1;margin-bottom:18px}.cs-sec-title em{color:var(--accent)}
+.cs-body{font-size:17px;color:var(--text2);line-height:1.8;max-width:720px}.cs-body p{margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px 22px;box-shadow:var(--sh-sm)}.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--accent);margin-bottom:8px}.stat span{font-size:13.5px;color:var(--text2);line-height:1.4;display:block}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.feat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm)}.feat h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;gap:10px;align-items:baseline}.feat h3 i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--accent)}.feat p{font-size:15px;color:var(--text2);line-height:1.65}
+.notes{display:flex;flex-direction:column;gap:12px;margin-top:20px}.note{display:flex;gap:14px;padding:20px 22px;background:var(--white);border:1px solid var(--border);border-radius:18px}.note::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}.note b{display:block;font-weight:600;margin-bottom:2px}.note span{color:var(--text2);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.chip{font-family:var(--mono);font-size:12.5px;padding:8px 14px;border-radius:100px;background:var(--white);border:1px solid var(--border2)}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.gallery figure{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm)}.gallery figure.wide{grid-column:1/-1}.gallery img{display:block;width:100%;height:auto}.gallery figcaption{padding:14px 18px;font-size:14px;color:var(--text2);border-top:1px solid var(--border)}
+.mobile{display:flex;gap:28px;align-items:center;margin-top:28px;background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:32px;flex-wrap:wrap}.mobile img{width:210px;max-width:100%;border-radius:22px;border:1px solid var(--border2);box-shadow:var(--sh-md)}.mobile p{flex:1 1 240px;color:var(--text2)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pn a{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:28px 32px;text-decoration:none;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s;display:block}.pn a:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}.pn a:active{transform:scale(.99)}.pn small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}.pn strong{display:block;font-family:var(--serif);font-weight:400;font-size:30px;margin-top:6px}.pn a.next{text-align:right}
+footer{border-top:1px solid var(--border);padding:32px 60px;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;font-size:13.5px;color:var(--text3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.fade-up{opacity:0}
+::selection{background:var(--accent-light);color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:900px){nav{padding:0 20px}.page{padding:0 20px 80px}footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center}.cs-hero{padding:44px 0 32px}.cs-meta,.stats{grid-template-columns:1fr 1fr}.feats,.gallery,.pn{grid-template-columns:1fr}.pn a.next{text-align:left}.cs-section{margin-bottom:56px}.mobile{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fade-up{opacity:1!important}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Paras<span>.</span></a>
+  <a class="nav-back" href="index.html#projects"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 7.5H2M7 3L2 7.5 7 12"/></svg>Back to work</a>
+</nav>
+<main class="page">
+  <header class="cs-hero">
+    <div class="cs-tags"><span class="cs-tag">E-commerce app</span><span class="cs-tag">Booking system</span><span class="cs-tag">3D</span></div>
+    <h1 class="cs-title">Wrap your Tesla.<br><em>See it first.</em></h1>
+    <p class="cs-subtitle">An app-style website and booking system for a Tesla wrap, protection and parts shop in Vaughan, Ontario. The home page is a configurator: pick your Tesla, tap a wrap colour and the car repaints.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Teslife</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2026</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Design &amp; development</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Status</div><div class="cs-meta-value">Live build</div></div>
+    </div>
+    <a class="cs-visit" href="https://teslife-nine.vercel.app" target="_blank" rel="noopener">Visit teslife-nine.vercel.app <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+    <div class="cs-cover fade-up"><img src="assets/projects/teslife/cover.webp" alt="Teslife home page" width="1200" loading="eager"></div>
+  </header>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Brief</div><h2 class="cs-sec-title">The <em>problem</em></h2><div class="cs-body"><p>Most wrap shops sell with a gallery and a phone number. Teslife needed something closer to configuring a car online: see the finished colour first, see the price, then book a drop-off without back-and-forth.</p><p>The site is built like an app: a configurator home, searchable services and parts, a three-step booking flow and a way to track the job afterwards.</p></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">At a glance</div><div class="stats"><div class="stat"><b>39</b><span>wrap shades in stock</span></div><div class="stat"><b>5</b><span>rotatable 3D models</span></div><div class="stat"><b>3</b><span>bays a day, enforced in code</span></div><div class="stat"><b>$2,200</b><span>full wrap, from</span></div></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">What's inside</div><h2 class="cs-sec-title">What I <em>built</em></h2><div class="feats"><div class="feat"><h3><i>01</i>Configurator home</h3><p>Pick your Tesla, tap a wrap colour and the car repaints. Gloss, satin and matte read differently. Choose Avery or 3M film, then add parts, tint or chrome delete; lips, spoilers, mirror caps, tint and chrome delete show on the car.</p></div><div class="feat"><h3><i>02</i>Look packs</h3><p>One tap adds a gloss black or carbon look set. Plain groupings, no implied discount.</p></div><div class="feat"><h3><i>03</i>Services and parts</h3><p>Searchable lists that filter to your model, so nothing irrelevant shows up.</p></div><div class="feat"><h3><i>04</i>Three-step booking</h3><p>Car and items, then start day and drop-off time, then details. The calendar knows how long the job keeps the car (wraps take about four working days) and shows the span. Full days are struck through, with the next free days suggested.</p></div><div class="feat"><h3><i>05</i>Done screen and hand-off</h3><p>A booking reference, what happens next, and pre-filled Text and WhatsApp messages. If the booking can&#x27;t be saved (offline, 10-second timeout) the details go by text instead of being lost. The screen survives a refresh for 48 hours.</p></div><div class="feat"><h3><i>06</i>Track a job</h3><p>Look up a booking by reference or plate plus phone number.</p></div><div class="feat"><h3><i>07</i>Real 3D, only when needed</h3><p>Rotatable 3D models for Model 3, S, Y, X and Cybertruck. three.js loads only when a 3D car is on screen, and a side-view drawing takes over when WebGL is off.</p></div><div class="feat"><h3><i>08</i>Light, dark and phone-first</h3><p>Follows the system theme. Phones get a bottom tab bar.</p></div></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Design</div><h2 class="cs-sec-title">Design <em>decisions</em></h2><div class="notes"><div class="note"><div><b>Apple &#x27;Buy&#x27; page style</b><span>A big product stage with the options beside it. The car is the interface.</span></div></div><div class="note"><div><b>Honest pricing</b><span>Prices are shown as published; items with no published price book as a quote instead of guessing.</span></div></div><div class="note"><div><b>Capacity rules in the open</b><span>The calendar shows exactly what the shop can take, so customers pick days that will actually work.</span></div></div></div></section>
+  <div class="cs-section fade-up"><div class="cs-eyebrow">Screens</div><h2 class="cs-sec-title">The <em>build</em></h2><div class="gallery"><figure><img src="assets/projects/teslife/shot1.webp" alt="Model 3 in the configurator: film options and add-ons beside a rotatable 3D car." width="1200" loading="lazy"><figcaption>Model 3 in the configurator: film options and add-ons beside a rotatable 3D car.</figcaption></figure><figure><img src="assets/projects/teslife/shot2.webp" alt="Tap a shade and the car repaints; 39 shades to browse." width="1200" loading="lazy"><figcaption>Tap a shade and the car repaints; 39 shades to browse.</figcaption></figure><figure><img src="assets/projects/teslife/shot3.webp" alt="Reviews and shop details at the end of the page." width="1200" loading="lazy"><figcaption>Reviews and shop details at the end of the page.</figcaption></figure></div>
+<div class="mobile"><img src="assets/projects/teslife/mobile.webp" alt="Teslife on a phone" width="420" loading="lazy"><p>On a phone the layout is rebuilt for thumbs, not just squeezed: larger targets, a simpler header and the same content in a single column.</p></div></div>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Stack</div><h2 class="cs-sec-title">Built <em>with</em></h2><div class="chips"><span class="chip">Next.js 16 (App Router)</span><span class="chip">Tailwind CSS 4</span><span class="chip">TypeScript</span><span class="chip">three.js</span><span class="chip">React Three Fiber</span><span class="chip">motion</span><span class="chip">Supabase (Postgres)</span><span class="chip">Resend (booking emails)</span><span class="chip">Vercel</span></div><div class="notes"><div class="note"><div><b>Capacity, twice</b><span>The rules (3 cars a day, at most 2 multi-day jobs at once, unconfirmed requests hold their days for 48 hours) run in the app and again in a database trigger, so two people can never take the last bay.</span></div></div><div class="note"><div><b>Credits kept</b><span>Each 3D model&#x27;s licence and author credit is shown under the stage while it is visible.</span></div></div></div></section>
+  <nav class="pn fade-up" aria-label="More projects" style="position:static;background:none;border:0;height:auto;padding:0;backdrop-filter:none">
+    <a href="case-aceautos.html"><small>← Previous</small><strong>Ace Autos</strong></a>
+    <a class="next" href="case-llredesign.html"><small>Next →</small><strong>LL Limitless Luxuries</strong></a>
+  </nav>
+</main>
+<footer><span>© 2026 Paras Nagda · UI/UX Designer · Mumbai</span><a href="index.html#projects">← Back to portfolio</a></footer>
+<script>
+var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.style.animation='fadeUp .65s cubic-bezier(.22,1,.36,1) both';o.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.fade-up').forEach(function(el){el.style.animation='none';o.observe(el)});
+</script>
+</body>
+</html>

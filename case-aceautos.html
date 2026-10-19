@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ace Autos — Case Study · Paras Nagda</title>
+<meta name="description" content="An online store for car window films and lighting in India, built on Shopify with prices that follow the exact make, model, range and sunroof.">
+<meta property="og:title" content="Ace Autos — Case Study · Paras Nagda">
+<meta property="og:description" content="An online store for car window films and lighting in India, built on Shopify with prices that follow the exact make, model, range and sunroof.">
+<meta property="og:image" content="assets/projects/aceautos/cover.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--bg2:#f3f1ec;--bg3:#eae7e0;--white:#fff;--border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.13);--text:#1a1814;--text2:#5f5b54;--text3:#6f6b64;--accent:#2d5a3d;--accent-light:#e8f0eb;--nav-bg:rgba(250,249,247,.9);--sh-sm:0 1px 4px rgba(0,0,0,.05);--sh-md:0 10px 30px rgba(0,0,0,.08);
+--sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--serif:'Instrument Serif','Iowan Old Style',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--bg2:#1c1b19;--bg3:#2a2926;--white:#1d1c1a;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);--text:#f2efe9;--text2:#a6a199;--text3:#8d8880;--accent:#7dc196;--accent-light:rgba(125,193,150,.13);--nav-bg:rgba(20,20,19,.85);--sh-sm:0 1px 4px rgba(0,0,0,.4);--sh-md:0 10px 30px rgba(0,0,0,.45)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:24px;text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:100px;border:1px solid var(--border);transition:background-color .18s,color .18s}
+.nav-back:hover{background:var(--bg2);color:var(--text)}.nav-back svg{width:14px;height:14px}
+.page{max-width:1080px;margin:0 auto;padding:0 60px 120px}
+.cs-hero{padding:72px 0 48px}
+.cs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.cs-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:var(--accent-light);color:var(--accent)}
+.cs-title{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,92px);line-height:1;letter-spacing:-.02em;margin-bottom:24px}.cs-title em{color:var(--accent)}
+.cs-subtitle{font-size:19px;color:var(--text2);line-height:1.7;max-width:660px;margin-bottom:40px}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:40px}
+.cs-meta-item{background:var(--white);padding:20px 24px}.cs-meta-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}.cs-meta-value{font-size:15px;font-weight:500}
+.cs-visit{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:100px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:500;font-size:15px;transition:transform .18s}.cs-visit:hover{transform:translateY(-2px)}.cs-visit:active{transform:scale(.97)}
+.cs-cover{margin:48px 0 80px;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh-md);background:var(--bg2)}.cs-cover img{display:block;width:100%;height:auto}
+.cs-cover.art{aspect-ratio:16/7;display:grid;place-items:center;background:linear-gradient(135deg,#1b2b22,#3d2e14);color:#f2efe9}.cs-cover.art span{font-family:var(--serif);font-size:clamp(40px,7vw,96px)}
+.cs-section{margin-bottom:80px}
+.cs-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}.cs-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.cs-sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);letter-spacing:-.01em;line-height:1.1;margin-bottom:18px}.cs-sec-title em{color:var(--accent)}
+.cs-body{font-size:17px;color:var(--text2);line-height:1.8;max-width:720px}.cs-body p{margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px 22px;box-shadow:var(--sh-sm)}.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--accent);margin-bottom:8px}.stat span{font-size:13.5px;color:var(--text2);line-height:1.4;display:block}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.feat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm)}.feat h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;gap:10px;align-items:baseline}.feat h3 i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--accent)}.feat p{font-size:15px;color:var(--text2);line-height:1.65}
+.notes{display:flex;flex-direction:column;gap:12px;margin-top:20px}.note{display:flex;gap:14px;padding:20px 22px;background:var(--white);border:1px solid var(--border);border-radius:18px}.note::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}.note b{display:block;font-weight:600;margin-bottom:2px}.note span{color:var(--text2);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.chip{font-family:var(--mono);font-size:12.5px;padding:8px 14px;border-radius:100px;background:var(--white);border:1px solid var(--border2)}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.gallery figure{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm)}.gallery figure.wide{grid-column:1/-1}.gallery img{display:block;width:100%;height:auto}.gallery figcaption{padding:14px 18px;font-size:14px;color:var(--text2);border-top:1px solid var(--border)}
+.mobile{display:flex;gap:28px;align-items:center;margin-top:28px;background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:32px;flex-wrap:wrap}.mobile img{width:210px;max-width:100%;border-radius:22px;border:1px solid var(--border2);box-shadow:var(--sh-md)}.mobile p{flex:1 1 240px;color:var(--text2)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pn a{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:28px 32px;text-decoration:none;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s;display:block}.pn a:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}.pn a:active{transform:scale(.99)}.pn small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}.pn strong{display:block;font-family:var(--serif);font-weight:400;font-size:30px;margin-top:6px}.pn a.next{text-align:right}
+footer{border-top:1px solid var(--border);padding:32px 60px;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;font-size:13.5px;color:var(--text3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.fade-up{opacity:0}
+::selection{background:var(--accent-light);color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:900px){nav{padding:0 20px}.page{padding:0 20px 80px}footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center}.cs-hero{padding:44px 0 32px}.cs-meta,.stats{grid-template-columns:1fr 1fr}.feats,.gallery,.pn{grid-template-columns:1fr}.pn a.next{text-align:left}.cs-section{margin-bottom:56px}.mobile{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fade-up{opacity:1!important}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Paras<span>.</span></a>
+  <a class="nav-back" href="index.html#projects"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 7.5H2M7 3L2 7.5 7 12"/></svg>Back to work</a>
+</nav>
+<main class="page">
+  <header class="cs-hero">
+    <div class="cs-tags"><span class="cs-tag">E-commerce</span><span class="cs-tag">Shopify</span><span class="cs-tag">Automotive</span></div>
+    <h1 class="cs-title">Car film and lighting,<br><em>fitted for your car.</em></h1>
+    <p class="cs-subtitle">An online store for car window films and lighting in India, built on Shopify with prices that follow the exact make, model, range and sunroof.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Ace Autos</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2026</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Store build &amp; product setup</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Status</div><div class="cs-meta-value">Live store</div></div>
+    </div>
+    <a class="cs-visit" href="https://aceautos.in" target="_blank" rel="noopener">Visit aceautos.in <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+    <div class="cs-cover fade-up art"><span>Ace Autos</span></div>
+  </header>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Brief</div><h2 class="cs-sec-title">The <em>problem</em></h2><div class="cs-body"><p>Window film is bought per car, not per roll. A customer needs the price for their model, in the range they want, with or without a sunroof.</p><p>So the catalogue is organised by make, and each product carries the price matrix for every model of that make.</p></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">At a glance</div><div class="stats"><div class="stat"><b>107</b><span>products in the catalogue</span></div><div class="stat"><b>204</b><span>variants on a single make&#x27;s page</span></div><div class="stat"><b>4</b><span>film ranges: Economy, Elegant, Premium, Diamond</span></div><div class="stat"><b>₹</b><span>INR pricing</span></div></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">What's inside</div><h2 class="cs-sec-title">What I <em>built</em></h2><div class="feats"><div class="feat"><h3><i>01</i>V-KOOL heat control film, by make</h3><p>A product per manufacturer (Mercedes-Benz, Audi, BMW, Jeep, Volkswagen, MG, Mahindra, Honda, Toyota, Kia, Maruti Suzuki, Skoda, Tata, Hyundai and more). Pick your model, range and sunroof option; the price shown covers the full car.</p></div><div class="feat"><h3><i>02</i>SunFlect nano-ceramic film</h3><p>Individual shades such as IR Blue 80, IR Green 70, HD Blue 70 and HD Charcoal 70, priced by body type (hatchback, sedan, SUV) with and without a sunroof, each with its own SKU.</p></div><div class="feat"><h3><i>03</i>Signature series, enquire only</h3><p>Higher-end film lines list heat-rejection percentages per variant and are tagged &#x27;Enquire only&#x27; so they lead to a conversation, not a checkout.</p></div><div class="feat"><h3><i>04</i>Lighting</h3><p>LED driving and fog lights sold in sets, with the lens and beam details in the description.</p></div><div class="feat"><h3><i>05</i>Stock-aware variants</h3><p>Inventory is tracked per variant, so only combinations the shop can fit show as available.</p></div></div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Design</div><h2 class="cs-sec-title">Design <em>decisions</em></h2><div class="notes"><div class="note"><div><b>Catalogue as a price calculator</b><span>The variant picker is the interface: model, range, sunroof, price. No spec-sheet hunting.</span></div></div><div class="note"><div><b>Clear vendor labels</b><span>Every product carries its brand, type and tags so films can be filtered and compared.</span></div></div></div></section>
+  
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Stack</div><h2 class="cs-sec-title">Built <em>with</em></h2><div class="chips"><span class="chip">Shopify</span><span class="chip">Shopify Admin API (catalogue setup)</span><span class="chip">INR pricing</span><span class="chip">Per-variant inventory and SKUs</span></div><div class="notes"><div class="note"><div><b>Screenshots</b><span>Store screenshots will be added here; this page is written from the live catalogue.</span></div></div></div></section>
+  <nav class="pn fade-up" aria-label="More projects" style="position:static;background:none;border:0;height:auto;padding:0;backdrop-filter:none">
+    <a href="case-a1guard3d.html"><small>← Previous</small><strong>A1 Guard 3D</strong></a>
+    <a class="next" href="case-teslife.html"><small>Next →</small><strong>Teslife</strong></a>
+  </nav>
+</main>
+<footer><span>© 2026 Paras Nagda · UI/UX Designer · Mumbai</span><a href="index.html#projects">← Back to portfolio</a></footer>
+<script>
+var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.style.animation='fadeUp .65s cubic-bezier(.22,1,.36,1) both';o.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.fade-up').forEach(function(el){el.style.animation='none';o.observe(el)});
+</script>
+</body>
+</html>

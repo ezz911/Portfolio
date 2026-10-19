@@ -1,0 +1,128 @@
+import html, sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from case_data import PROJECTS
+
+E = html.escape
+FONTS = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+THEME_JS = "(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
+CSS = """
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--bg2:#f3f1ec;--bg3:#eae7e0;--white:#fff;--border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.13);--text:#1a1814;--text2:#5f5b54;--text3:#6f6b64;--accent:#2d5a3d;--accent-light:#e8f0eb;--nav-bg:rgba(250,249,247,.9);--sh-sm:0 1px 4px rgba(0,0,0,.05);--sh-md:0 10px 30px rgba(0,0,0,.08);
+--sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--serif:'Instrument Serif','Iowan Old Style',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--bg2:#1c1b19;--bg3:#2a2926;--white:#1d1c1a;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);--text:#f2efe9;--text2:#a6a199;--text3:#8d8880;--accent:#7dc196;--accent-light:rgba(125,193,150,.13);--nav-bg:rgba(20,20,19,.85);--sh-sm:0 1px 4px rgba(0,0,0,.4);--sh-md:0 10px 30px rgba(0,0,0,.45)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:24px;text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:100px;border:1px solid var(--border);transition:background-color .18s,color .18s}
+.nav-back:hover{background:var(--bg2);color:var(--text)}.nav-back svg{width:14px;height:14px}
+.page{max-width:1080px;margin:0 auto;padding:0 60px 120px}
+.cs-hero{padding:72px 0 48px}
+.cs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.cs-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:var(--accent-light);color:var(--accent)}
+.cs-title{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,92px);line-height:1;letter-spacing:-.02em;margin-bottom:24px}.cs-title em{color:var(--accent)}
+.cs-subtitle{font-size:19px;color:var(--text2);line-height:1.7;max-width:660px;margin-bottom:40px}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:40px}
+.cs-meta-item{background:var(--white);padding:20px 24px}.cs-meta-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}.cs-meta-value{font-size:15px;font-weight:500}
+.cs-visit{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:100px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:500;font-size:15px;transition:transform .18s}.cs-visit:hover{transform:translateY(-2px)}.cs-visit:active{transform:scale(.97)}
+.cs-cover{margin:48px 0 80px;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh-md);background:var(--bg2)}.cs-cover img{display:block;width:100%;height:auto}
+.cs-cover.art{aspect-ratio:16/7;display:grid;place-items:center;background:linear-gradient(135deg,#1b2b22,#3d2e14);color:#f2efe9}.cs-cover.art span{font-family:var(--serif);font-size:clamp(40px,7vw,96px)}
+.cs-section{margin-bottom:80px}
+.cs-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}.cs-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.cs-sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);letter-spacing:-.01em;line-height:1.1;margin-bottom:18px}.cs-sec-title em{color:var(--accent)}
+.cs-body{font-size:17px;color:var(--text2);line-height:1.8;max-width:720px}.cs-body p{margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px 22px;box-shadow:var(--sh-sm)}.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--accent);margin-bottom:8px}.stat span{font-size:13.5px;color:var(--text2);line-height:1.4;display:block}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.feat{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh-sm)}.feat h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;gap:10px;align-items:baseline}.feat h3 i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--accent)}.feat p{font-size:15px;color:var(--text2);line-height:1.65}
+.notes{display:flex;flex-direction:column;gap:12px;margin-top:20px}.note{display:flex;gap:14px;padding:20px 22px;background:var(--white);border:1px solid var(--border);border-radius:18px}.note::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}.note b{display:block;font-weight:600;margin-bottom:2px}.note span{color:var(--text2);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.chip{font-family:var(--mono);font-size:12.5px;padding:8px 14px;border-radius:100px;background:var(--white);border:1px solid var(--border2)}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.gallery figure{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--sh-sm)}.gallery figure.wide{grid-column:1/-1}.gallery img{display:block;width:100%;height:auto}.gallery figcaption{padding:14px 18px;font-size:14px;color:var(--text2);border-top:1px solid var(--border)}
+.mobile{display:flex;gap:28px;align-items:center;margin-top:28px;background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:32px;flex-wrap:wrap}.mobile img{width:210px;max-width:100%;border-radius:22px;border:1px solid var(--border2);box-shadow:var(--sh-md)}.mobile p{flex:1 1 240px;color:var(--text2)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pn a{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:28px 32px;text-decoration:none;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s;display:block}.pn a:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}.pn a:active{transform:scale(.99)}.pn small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}.pn strong{display:block;font-family:var(--serif);font-weight:400;font-size:30px;margin-top:6px}.pn a.next{text-align:right}
+footer{border-top:1px solid var(--border);padding:32px 60px;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;font-size:13.5px;color:var(--text3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.fade-up{opacity:0}
+::selection{background:var(--accent-light);color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:900px){nav{padding:0 20px}.page{padding:0 20px 80px}footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center}.cs-hero{padding:44px 0 32px}.cs-meta,.stats{grid-template-columns:1fr 1fr}.feats,.gallery,.pn{grid-template-columns:1fr}.pn a.next{text-align:left}.cs-section{margin-bottom:56px}.mobile{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fade-up{opacity:1!important}}
+"""
+
+def page(i, p):
+    prev = PROJECTS[(i - 1) % len(PROJECTS)]
+    nxt = PROJECTS[(i + 1) % len(PROJECTS)]
+    s = p["slug"]
+    cover = (f'<div class="cs-cover fade-up art"><span>{E(p["name"])}</span></div>' if p.get("no_image")
+             else f'<div class="cs-cover fade-up"><img src="assets/projects/{s}/cover.webp" alt="{E(p["name"])} home page" width="1200" loading="eager"></div>')
+    stats = "".join(f'<div class="stat"><b>{E(a)}</b><span>{E(b)}</span></div>' for a, b in p["stats"])
+    feats = "".join(f'<div class="feat"><h3><i>{n+1:02d}</i>{E(t)}</h3><p>{E(d)}</p></div>' for n, (t, d) in enumerate(p["features"]))
+    design = "".join(f'<div class="note"><div><b>{E(t)}</b><span>{E(d)}</span></div></div>' for t, d in p["design"])
+    notes = "".join(f'<div class="note"><div><b>{E(t)}</b><span>{E(d)}</span></div></div>' for t, d in p["notes"])
+    chips = "".join(f'<span class="chip">{E(t)}</span>' for t in p["tech"])
+    brief = "".join(f"<p>{E(x)}</p>" for x in p["brief"])
+    shots = ""
+    if p["shots"]:
+        figs = "".join(f'<figure><img src="assets/projects/{s}/{f}.webp" alt="{E(c)}" width="1200" loading="lazy"><figcaption>{E(c)}</figcaption></figure>' for f, c in p["shots"])
+        shots = f'''<div class="cs-section fade-up"><div class="cs-eyebrow">Screens</div><h2 class="cs-sec-title">The <em>build</em></h2><div class="gallery">{figs}</div>
+<div class="mobile"><img src="assets/projects/{s}/mobile.webp" alt="{E(p["name"])} on a phone" width="420" loading="lazy"><p>On a phone the layout is rebuilt for thumbs, not just squeezed: larger targets, a simpler header and the same content in a single column.</p></div></div>'''
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{E(p["name"])} — Case Study · Paras Nagda</title>
+<meta name="description" content="{E(p["lede"])}">
+<meta property="og:title" content="{E(p["name"])} — Case Study · Paras Nagda">
+<meta property="og:description" content="{E(p["lede"])}">
+<meta property="og:image" content="assets/projects/{s}/cover.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="{FONTS}" rel="stylesheet">
+<script>{THEME_JS}</script>
+<style>{CSS}</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Paras<span>.</span></a>
+  <a class="nav-back" href="index.html#projects"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 7.5H2M7 3L2 7.5 7 12"/></svg>Back to work</a>
+</nav>
+<main class="page">
+  <header class="cs-hero">
+    <div class="cs-tags">{"".join(f'<span class="cs-tag">{E(t)}</span>' for t in p["tags"])}</div>
+    <h1 class="cs-title">{E(p["title_pre"])}<br><em>{E(p["em"]) if p["slug"] not in ("teslife",) else E(p["em"])}</em></h1>
+    <p class="cs-subtitle">{E(p["lede"])}</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">{E(p["name"])}</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">{E(p["year"])}</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">{E(p["role"])}</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Status</div><div class="cs-meta-value">{E(p["status"])}</div></div>
+    </div>
+    <a class="cs-visit" href="{E(p["url"])}" target="_blank" rel="noopener">Visit {E(p["url_label"])} <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M5 3h6v6"/></svg></a>
+    {cover}
+  </header>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Brief</div><h2 class="cs-sec-title">The <em>problem</em></h2><div class="cs-body">{brief}</div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">At a glance</div><div class="stats">{stats}</div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">What's inside</div><h2 class="cs-sec-title">What I <em>built</em></h2><div class="feats">{feats}</div></section>
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Design</div><h2 class="cs-sec-title">Design <em>decisions</em></h2><div class="notes">{design}</div></section>
+  {shots}
+  <section class="cs-section fade-up"><div class="cs-eyebrow">Stack</div><h2 class="cs-sec-title">Built <em>with</em></h2><div class="chips">{chips}</div><div class="notes">{notes}</div></section>
+  <nav class="pn fade-up" aria-label="More projects" style="position:static;background:none;border:0;height:auto;padding:0;backdrop-filter:none">
+    <a href="case-{prev["slug"]}.html"><small>← Previous</small><strong>{E(prev["name"])}</strong></a>
+    <a class="next" href="case-{nxt["slug"]}.html"><small>Next →</small><strong>{E(nxt["name"])}</strong></a>
+  </nav>
+</main>
+<footer><span>© 2026 Paras Nagda · UI/UX Designer · Mumbai</span><a href="index.html#projects">← Back to portfolio</a></footer>
+<script>
+var o=new IntersectionObserver(function(e){{e.forEach(function(x){{if(x.isIntersecting){{x.target.style.animation='fadeUp .65s cubic-bezier(.22,1,.36,1) both';o.unobserve(x.target)}}}})}},{{threshold:.06}});
+document.querySelectorAll('.fade-up').forEach(function(el){{el.style.animation='none';o.observe(el)}});
+</script>
+</body>
+</html>
+'''
+
+for i, p in enumerate(PROJECTS):
+    with open(f"case-{p['slug']}.html", "w") as f:
+        f.write(page(i, p))
+print("built", len(PROJECTS))
