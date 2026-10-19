@@ -1208,10 +1208,6 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
       melodyIn=ctx.createGain();melodyIn.connect(bus);melodyIn.connect(echo);
       noiseBuf=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);
       var d=noiseBuf.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
-      var hiss=ctx.createBufferSource();hiss.buffer=noiseBuf;hiss.loop=true;
-      var hf=ctx.createBiquadFilter();hf.type='highpass';hf.frequency.value=4500;
-      var hg=ctx.createGain();hg.gain.value=.012;
-      hiss.connect(hf);hf.connect(hg);hg.connect(master);hiss.start();
     }
     /* --- voices --- */
     function noise(t,dur,type,freq,gain,dest){
@@ -1279,7 +1275,6 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
         if(sb%2===0)noise(tt,.05,'highpass',7500,.05+Math.random()*.05);
         else if(Math.random()<.25)noise(tt,.03,'highpass',8500,.035);
         if(sb%2===0&&Math.random()<.3)tone(tt,rnd(T.pent),.8,'sine',.06,melodyIn);
-        if(Math.random()<.3)noise(t+Math.random()*STEP,.012,'highpass',1500,.05+Math.random()*.12,master);
       },
       tjazz:function(s,t){
         var bar=(s>>4)%4,sb=s%16,tt=t+(sb%2?STEP*.28:0),ch=T.chords[bar],nextRoot=T.roots[(bar+1)%4];
