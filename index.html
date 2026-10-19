@@ -396,6 +396,50 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 }
 @media(prefers-reduced-motion:reduce){.mp *{animation:none!important;transition-duration:.01ms!important}}
 @media(prefers-reduced-transparency:reduce){.mp-glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(40,36,46,.92)}}
+
+/* --- NAV MUSIC NOTCH --- */
+.notch{--glow:rgba(255,140,60,.55);position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:3;width:100px;height:34px;border-radius:17px;background:#000;color:#fff;overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 6px 18px rgba(0,0,0,.28);
+  transition:width .6s cubic-bezier(.34,1.35,.5,1),height .6s cubic-bezier(.34,1.35,.5,1),border-radius .6s cubic-bezier(.34,1.35,.5,1),box-shadow .5s ease}
+.notch[data-genre="tjazz"]{--glow:rgba(168,85,247,.6)}
+.notch[data-genre="techno"]{--glow:rgba(34,211,238,.55)}
+.notch[data-genre="afro"]{--glow:rgba(244,114,182,.6)}
+.notch[data-playing="true"]{box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 20px -4px var(--glow),0 6px 18px rgba(0,0,0,.28)}
+.notch[data-open="true"]{width:min(372px,calc(100vw - 24px));height:92px;border-radius:30px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 18px 44px rgba(0,0,0,.4)}
+.notch button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nt-compact{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:9px;transition:opacity .25s ease .1s}
+.notch[data-open="true"] .nt-compact{opacity:0;pointer-events:none;transition-delay:0s}
+.nt-thumb{width:22px;height:22px;border-radius:7px;flex:none;background:url(assets/music/cover.jpg) center/cover;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.nt-thumb-lg{width:50px;height:50px;border-radius:13px}
+.notch[data-genre="tjazz"] .nt-thumb{filter:hue-rotate(255deg) saturate(1.2)}
+.notch[data-genre="techno"] .nt-thumb{filter:hue-rotate(170deg) saturate(1.1) brightness(.9)}
+.notch[data-genre="afro"] .nt-thumb{filter:hue-rotate(-28deg) saturate(1.5) brightness(1.1)}
+.nt-note{font-size:15px;color:rgba(255,255,255,.7);line-height:1}
+.nt-eq{display:none;align-items:flex-end;gap:2px;height:14px}
+.nt-eq i{width:3px;border-radius:2px;background:linear-gradient(to top,var(--glow),#fff);height:30%;animation:ntEq .9s ease-in-out infinite}
+.nt-eq i:nth-child(2){animation-delay:-.25s}.nt-eq i:nth-child(3){animation-delay:-.5s}.nt-eq i:nth-child(4){animation-delay:-.7s}
+@keyframes ntEq{0%,100%{height:22%}50%{height:100%}}
+.notch[data-playing="true"] .nt-eq{display:flex}
+.notch[data-playing="true"] .nt-note{display:none}
+.nt-exp{position:absolute;inset:0;padding:12px 14px 0 12px;opacity:0;visibility:hidden;transform:scale(.96);transform-origin:50% 0;transition:opacity .2s ease,transform .5s cubic-bezier(.34,1.35,.5,1),visibility 0s .5s}
+.notch[data-open="true"] .nt-exp{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease .14s,transform .55s cubic-bezier(.34,1.35,.5,1) .08s,visibility 0s}
+.nt-row{display:flex;align-items:center;gap:6px}
+.nt-open{flex:1;min-width:0;display:flex!important;align-items:center;gap:12px;text-align:left;border-radius:16px}
+.nt-text{min-width:0;display:block}
+.nt-text b{display:block;font-size:15px;font-weight:650;letter-spacing:-.015em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt-text small{display:block;font-size:12.5px;color:rgba(255,255,255,.62);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt-btns{display:flex;align-items:center;gap:2px;flex:none}
+.nt-btn{width:38px;height:38px;border-radius:50%;display:grid!important;place-items:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background-color .2s}
+.nt-btn svg{width:20px;height:20px}
+.nt-btn:hover{background:rgba(255,255,255,.12)}
+.nt-btn:active{transform:scale(.88)}
+.nt-play svg{width:22px;height:22px}
+.nt-prog{height:4px;border-radius:2px;background:rgba(255,255,255,.2);margin:12px 4px 0 4px;overflow:hidden}
+.nt-prog i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+.notch button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:380px){.notch{width:88px}}
+@media(prefers-reduced-motion:reduce){.notch,.notch *{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
@@ -530,6 +574,30 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5h16M2 10h16M2 15h16"/></svg>
   </button>
+  </div>
+  <div class="notch" id="notch" data-open="false" data-playing="false" data-genre="lofi" role="group" aria-label="Music">
+    <button class="nt-compact" id="ntToggle" type="button" aria-expanded="false" aria-controls="ntExp" aria-label="Music player">
+      <span class="nt-thumb" aria-hidden="true"></span>
+      <span class="nt-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="nt-note" aria-hidden="true">♪</span>
+    </button>
+    <div class="nt-exp" id="ntExp">
+      <div class="nt-row">
+        <button class="nt-open" id="ntOpen" type="button" aria-label="Open the full player">
+          <span class="nt-thumb nt-thumb-lg" aria-hidden="true"></span>
+          <span class="nt-text"><b id="ntTitle">Midnight Commit</b><small id="ntSub">Lo-fi · Paras Nagda</small></span>
+        </button>
+        <span class="nt-btns">
+          <button class="nt-btn" id="ntPrev" type="button" aria-label="Previous track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5.5a1 1 0 0 1 2 0v5.2l9.2-5.1c.9-.5 2 .1 2 1.1v10.6c0 1-1.1 1.6-2 1.1L8 13.3v5.2a1 1 0 0 1-2 0z"/></svg></button>
+          <button class="nt-btn nt-play" id="ntPlay" type="button" aria-label="Play" aria-pressed="false">
+            <svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2c0-1 1.1-1.6 1.9-1.1l9.4 6.1c.8.5.8 1.7 0 2.2l-9.4 6.1c-.8.5-1.9-.1-1.9-1.1z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4.5" width="4.2" height="15" rx="1.4"/><rect x="13.8" y="4.5" width="4.2" height="15" rx="1.4"/></svg>
+          </button>
+          <button class="nt-btn" id="ntNext" type="button" aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 5.5a1 1 0 0 0-2 0v5.2L6.8 5.6c-.9-.5-2 .1-2 1.1v10.6c0 1 1.1 1.6 2 1.1l9.2-5.1v5.2a1 1 0 0 0 2 0z"/></svg></button>
+        </span>
+      </div>
+      <div class="nt-prog" aria-hidden="true"><i id="ntBar"></i></div>
+    </div>
   </div>
 </nav>
 
@@ -1342,7 +1410,8 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
   /* ---------- UI ---------- */
   var status=$('mpStatus'),seek=$('mpSeek'),scrub=$('mpScrub'),full=$('mpFull'),miniWrap=mp.querySelector('.mp-mini-wrap');
   var cur=0,elapsed=0,playing=false,last=0,rafId=0;
-  var playBtns=[$('mpPlay'),$('mpMiniPlay')];
+  var playBtns=[$('mpPlay'),$('mpMiniPlay'),$('ntPlay')];
+  var notch=$('notch'),ntExp=$('ntExp');
 
   function buildQueue(){
     var q=$('mpQueue');q.innerHTML='';
@@ -1362,11 +1431,13 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     seek.value=Math.round(p*1000);
     scrub.style.setProperty('--p',(p*100)+'%');
     $('mpMiniBar').style.width=(p*100)+'%';
+    $('ntBar').style.width=(p*100)+'%';
     $('mpEl').textContent=fmt(elapsed);$('mpRe').textContent='-'+fmt(T.dur-elapsed);
   }
   function setMeta(){
     var T=TRACKS[cur];
-    mp.setAttribute('data-genre',T.genre);
+    mp.setAttribute('data-genre',T.genre);notch.setAttribute('data-genre',T.genre);
+    $('ntTitle').textContent=T.title;$('ntSub').textContent=T.label+' · Paras Nagda';
     $('mpTitle').textContent=T.title;
     $('mpArtist').textContent='Paras Nagda · '+T.label;
     mp.querySelector('.mp-title-m').textContent=T.title;
@@ -1374,7 +1445,7 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     [].forEach.call($('mpQueue').children,function(el,i){el.setAttribute('aria-current',i===cur?'true':'false')});
   }
   function setPlayingUI(on){
-    mp.setAttribute('data-playing',on?'true':'false');
+    mp.setAttribute('data-playing',on?'true':'false');notch.setAttribute('data-playing',on?'true':'false');
     playBtns.forEach(function(b){
       b.querySelector('.i-play').style.display=on?'none':'';
       b.querySelector('.i-pause').style.display=on?'':'none';
@@ -1416,10 +1487,13 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
   playBtns.forEach(function(b){b.addEventListener('click',toggle)});
   $('mpNext').addEventListener('click',function(){skip(1)});
   $('mpMiniNext').addEventListener('click',function(){skip(1)});
-  $('mpPrev').addEventListener('click',function(){
+  function prevTrack(){
     audio.prime();
     if(elapsed>4){elapsed=0;paint()}else skip(-1);
-  });
+  }
+  $('mpPrev').addEventListener('click',prevTrack);
+  $('ntPrev').addEventListener('click',prevTrack);
+  $('ntNext').addEventListener('click',function(){skip(1)});
   seek.addEventListener('input',function(){elapsed=seek.value/1000*TRACKS[cur].dur;paint()});
   $('mpVol').addEventListener('input',function(e){var v=e.target.value;e.target.style.setProperty('--p',v+'%');audio.volume(v/100)});
   $('mpFav').addEventListener('click',function(){var b=$('mpFav');b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});
@@ -1440,7 +1514,26 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
   $('mpCollapse').addEventListener('click',function(){setOpen(false,true)});
   mp.addEventListener('keydown',function(e){if(e.key==='Escape'&&mp.getAttribute('data-open')==='true')setOpen(false,true)});
 
-  buildQueue();setMeta();paint();setOpen(false,false);
+  /* ---------- nav notch ---------- */
+  function setNotch(open,focus){
+    notch.setAttribute('data-open',open?'true':'false');
+    $('ntToggle').setAttribute('aria-expanded',open?'true':'false');
+    ntExp.inert=!open;
+    if(focus)setTimeout(function(){(open?$('ntPlay'):$('ntToggle')).focus({preventScroll:true})},80);
+  }
+  $('ntToggle').addEventListener('click',function(){setNotch(true,true)});
+  $('ntOpen').addEventListener('click',function(){
+    setNotch(false,false);setOpen(true,false);
+    $('chill').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.addEventListener('click',function(e){
+    if(notch.getAttribute('data-open')==='true'&&!notch.contains(e.target))setNotch(false,false);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&notch.getAttribute('data-open')==='true')setNotch(false,true);
+  });
+
+  buildQueue();setMeta();paint();setOpen(false,false);setNotch(false,false);
 })();
 </script>
 <script>
