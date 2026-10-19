@@ -455,6 +455,37 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 .gf-fallback{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .gf-fallback a{display:inline-block;padding:7px 15px;border:1px solid var(--border2);border-radius:100px;color:var(--text2);text-decoration:none;font-size:13px}
 </style>
+<style>
+.fb{max-width:720px;margin:32px auto 0;display:flex;flex-direction:column;gap:28px}
+.fb-like{display:flex;align-items:center;gap:18px}
+.fb-heart{position:relative;width:72px;height:72px;border-radius:50%;border:1px solid var(--border2);background:var(--white);color:var(--text3);display:grid;place-items:center;cursor:pointer;box-shadow:var(--sh-sm);transition:transform .18s,color .2s,border-color .2s}
+.fb-heart:active{transform:scale(.92)}
+.fb-heart svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;transition:fill .2s}
+.fb-heart[aria-pressed=true]{color:#e5484d;border-color:rgba(229,72,77,.4)}
+.fb-heart[aria-pressed=true] svg{fill:currentColor;animation:fbPop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes fbPop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+.fb-burst{position:absolute;inset:0;pointer-events:none}
+.fb-burst i{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#e5484d;animation:fbFly .65s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes fbFly{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.fb-count{display:flex;flex-direction:column;line-height:1.1}.fb-count b{font-family:var(--serif);font-weight:400;font-size:44px}.fb-count span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+.fb-form{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:14px}
+.fb-chips{border:0;display:flex;flex-wrap:wrap;gap:8px}.fb-chips legend{font-size:14px;color:var(--text2);margin-bottom:10px;padding:0}
+.fb-chips label span{display:inline-block;padding:8px 14px;border-radius:100px;border:1px solid var(--border2);font-size:14px;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+.fb-chips input{position:absolute;opacity:0;pointer-events:none}
+.fb-chips input:checked+span{background:var(--accent-light);color:var(--accent);border-color:var(--accent)}
+.fb-chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.fb-form input[type=text],.fb-form textarea{width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--border2);border-radius:12px;padding:12px 14px;resize:vertical}
+.fb-form input:focus,.fb-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.fb-foot{display:flex;justify-content:space-between;align-items:center;gap:12px}.fb-err{color:#d23b3b;font-size:14px}
+.fb-send{font:inherit;font-weight:500;padding:12px 22px;border-radius:100px;border:0;background:var(--text);color:var(--bg);cursor:pointer;transition:transform .18s}.fb-send:active{transform:scale(.97)}
+.fb-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.fb-item{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:18px 20px;animation:fbIn .4s cubic-bezier(.22,1,.36,1)}
+@keyframes fbIn{from{opacity:0;transform:translateY(10px)}}
+.fb-item header{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px}.fb-item header b{font-weight:600}.fb-item header time{color:var(--text3);font-family:var(--mono);font-size:11px}
+.fb-item p{color:var(--text2);overflow-wrap:anywhere}.fb-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.fb-tags span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:100px;background:var(--accent-light);color:var(--accent)}
+.fb-note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--text3);text-align:center}
+@media(prefers-reduced-motion:reduce){.fb-heart svg,.fb-burst i,.fb-item{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -886,6 +917,38 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
         </div>
       </div></div>
       <p class="sr-only" id="mpStatus" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="section fade-up" id="feedback">
+    <div class="eyebrow">Feedback</div>
+    <h2 class="sec-title">Enjoying the <em>site?</em></h2>
+    <p class="sec-sub">Tap the heart, then tell me what worked for you.</p>
+    <div class="fb">
+      <div class="fb-like">
+        <button class="fb-heart" id="fbHeart" type="button" aria-pressed="false" aria-label="Like this portfolio">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.4 1.1 4 2.4h4C14.6 6.1 16 5 18 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.400 12 21 12 21z"/></svg>
+          <span class="fb-burst" aria-hidden="true"></span>
+        </button>
+        <div class="fb-count"><b id="fbCount">0</b><span id="fbCountLbl">likes</span></div>
+      </div>
+      <form class="fb-form" id="fbForm" novalidate>
+        <fieldset class="fb-chips"><legend>What did you like?</legend>
+          <label><input type="checkbox" value="Design"><span>Design</span></label>
+          <label><input type="checkbox" value="Animations"><span>Animations</span></label>
+          <label><input type="checkbox" value="Case studies"><span>Case studies</span></label>
+          <label><input type="checkbox" value="Music player"><span>Music player</span></label>
+          <label><input type="checkbox" value="Loader"><span>Loader</span></label>
+          <label><input type="checkbox" value="Speed"><span>Speed</span></label>
+        </fieldset>
+        <div class="fb-row">
+          <input id="fbName" type="text" maxlength="40" placeholder="Your name (optional)" autocomplete="name" aria-label="Your name">
+        </div>
+        <textarea id="fbBody" rows="3" maxlength="400" placeholder="Say a few words…" aria-label="Your comment"></textarea>
+        <div class="fb-foot"><span class="fb-err" id="fbErr" role="alert"></span><button class="fb-send" type="submit">Post comment</button></div>
+      </form>
+      <ul class="fb-list" id="fbList" aria-live="polite"></ul>
+      <p class="fb-note">Likes and comments are saved in this browser for now.</p>
     </div>
   </section>
 
@@ -1739,6 +1802,36 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+<script>
+(function(){
+  var K='pn-fb-v1',heart=document.getElementById('fbHeart');if(!heart)return;
+  var st;try{st=JSON.parse(localStorage.getItem(K))}catch(e){}
+  st=st&&typeof st==='object'?st:{};st.comments=Array.isArray(st.comments)?st.comments:[];
+  function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  var count=document.getElementById('fbCount'),lbl=document.getElementById('fbCountLbl'),list=document.getElementById('fbList');
+  function paintLike(){var n=st.liked?1:0;count.textContent=n;lbl.textContent=n===1?'like':'likes';heart.setAttribute('aria-pressed',st.liked?'true':'false')}
+  function burst(){var b=heart.querySelector('.fb-burst');b.innerHTML='';for(var i=0;i<10;i++){var d=document.createElement('i'),a=i/10*6.283,r=34+Math.random()*10;d.style.setProperty('--x',Math.cos(a)*r+'px');d.style.setProperty('--y',Math.sin(a)*r+'px');b.appendChild(d)}setTimeout(function(){b.innerHTML=''},800)}
+  heart.addEventListener('click',function(){st.liked=!st.liked;save();paintLike();if(st.liked&&!matchMedia('(prefers-reduced-motion:reduce)').matches)burst()});
+  function ago(t){var s=(Date.now()-t)/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+'m ago';if(s<86400)return Math.floor(s/3600)+'h ago';return new Date(t).toLocaleDateString()}
+  function render(){list.innerHTML='';st.comments.slice().reverse().forEach(function(c){
+    var li=document.createElement('li');li.className='fb-item';
+    var h=document.createElement('header'),n=document.createElement('b'),t=document.createElement('time');
+    n.textContent=c.name;t.textContent=ago(c.t);h.appendChild(n);h.appendChild(t);
+    var p=document.createElement('p');p.textContent=c.body;li.appendChild(h);li.appendChild(p);
+    if(c.liked&&c.liked.length){var g=document.createElement('div');g.className='fb-tags';c.liked.forEach(function(x){var s=document.createElement('span');s.textContent=x;g.appendChild(s)});li.appendChild(g)}
+    list.appendChild(li)})}
+  var form=document.getElementById('fbForm'),err=document.getElementById('fbErr');
+  form.addEventListener('submit',function(e){e.preventDefault();
+    var body=document.getElementById('fbBody'),name=document.getElementById('fbName');
+    var txt=body.value.trim();
+    if(txt.length<2){err.textContent='Write a few words first.';body.focus();return}
+    err.textContent='';
+    var liked=[].map.call(form.querySelectorAll('.fb-chips input:checked'),function(i){return i.value});
+    st.comments.push({name:name.value.trim()||'Anonymous',body:txt,liked:liked,t:Date.now()});
+    save();render();body.value='';[].forEach.call(form.querySelectorAll('.fb-chips input'),function(i){i.checked=false})});
+  paintLike();render();
+})();
 </script>
 </body>
 </html>
