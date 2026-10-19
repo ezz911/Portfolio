@@ -6,7 +6,7 @@
 <title>A1 Guard — Case Study · Paras Nagda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@300;400&display=swap" rel="stylesheet">
 <script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -16,14 +16,14 @@
   --text:#1a1814;--text2:#6b6760;--text3:#6f6b64;
   --accent:#2d5a3d;--accent-light:#e8f0eb;
   --accent2:#b87333;--accent2-light:#fdf0e3;
-  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --serif:'Syne','Helvetica Neue',Arial,sans-serif;
+  --sans:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;
+  --serif:'Neue Haas Grotesk Text Pro','Helvetica Neue',Inter,Arial,sans-serif;
   --sh-sm:0 1px 4px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
   --sh-md:0 4px 20px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
   --sh-lg:0 20px 60px rgba(0,0,0,0.1),0 6px 16px rgba(0,0,0,0.06);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:var(--nav-bg,rgba(250,249,247,0.92));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
@@ -160,9 +160,16 @@ footer a:hover{color:var(--text)}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--bg2:#1c1b19;--bg3:#2a2926;--white:#1d1c1a;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.16);--text:#f2efe9;--text2:#a6a199;--text3:#8d8880;--accent:#7dc196;--accent-light:rgba(125,193,150,0.13);--accent2:#d79a5e;--accent2-light:rgba(215,154,94,0.13);--nav-bg:rgba(20,20,19,0.85);--sh-sm:0 1px 4px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.3);--sh-md:0 4px 20px rgba(0,0,0,0.45),0 2px 6px rgba(0,0,0,0.3);--sh-lg:0 16px 48px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.35)}
 :root[data-theme="dark"] .cs-tag.blue{background:rgba(110,160,220,.14);color:#8fb4e6}
 
-/* display face (Syne) has no italic: keep accent words upright, heavier headlines */
-h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:600}
+/* display face (no italic) has no italic: keep accent words upright, heavier headlines */
+h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:500}
 h1 em,h2 em,h3 em,.hero-name em,.cs-title em,.sec-title em,.cs-sec-title em,.contact-title em,.ld-name em,.nav-logo span{font-style:normal}
+.eyebrow,.cs-eyebrow,.cs-tag,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker,.cs-meta-label,.pn small{font-family:var(--mono);font-weight:300}
+
+/* display look: tall high-contrast serif caps, emphasis words in bold grotesk (Signal-A reference) */
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name{font-family:'Instrument Serif','Times New Roman',serif;font-weight:400;text-transform:uppercase;letter-spacing:-0.01em;line-height:.95}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--sans);font-weight:700;font-style:normal;letter-spacing:-0.04em}
+.hero-name{font-size:clamp(56px,10vw,150px)!important}
+.sec-title,.cs-sec-title{font-size:clamp(40px,6vw,84px)}
 </style>
 </head>
 <body>
