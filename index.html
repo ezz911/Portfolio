@@ -7,7 +7,7 @@
 <meta name="description" content="Paras Nagda — UI/UX Designer &amp; performance marketer based in Mumbai. Design that works, marketing that sells. View case studies for A1 Guard, Maulika Sharma, Dr. Aryan Mehta, and Tatvika.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400&family=Noto+Serif+Gujarati:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400..700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400&family=Noto+Serif+Gujarati:wght@400&display=swap" rel="stylesheet">
 <script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -25,8 +25,8 @@
   --accent-light:#e8f0eb;
   --accent2:#b87333;
   --accent2-light:#fdf0e3;
-  --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --serif:'Instrument Serif','Iowan Old Style',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'Syne','Helvetica Neue',Arial,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
   --sh-sm:0 1px 4px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
   --sh-md:0 4px 20px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
@@ -58,7 +58,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--nav-bg,rgba(250,249,247,0
 .hero-name{font-family:var(--serif);font-size:clamp(50px,9.4vw,86px);font-weight:400;line-height:1;letter-spacing:-0.025em;color:var(--text);margin-bottom:22px}
 .hero-name em{font-style:italic;color:var(--accent)}
 .hero-name .muted{color:var(--text3)}
-@media(min-width:900px){.hero-name{font-size:clamp(78px,8.2vw,122px);line-height:.98;letter-spacing:-0.03em;width:max-content;max-width:calc(100vw - 80px)}.stat-num{font-size:48px}.hero-stats{gap:56px}}
+@media(min-width:900px){.hero-name{font-size:clamp(64px,6.6vw,100px);line-height:.98;letter-spacing:-0.03em;width:max-content;max-width:calc(100vw - 80px)}.stat-num{font-size:48px}.hero-stats{gap:56px}}
 .hero-bio{font-size:16.5px;color:var(--text2);line-height:1.75;max-width:540px;margin-bottom:36px;font-weight:400}
 .hero-bio strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -455,6 +455,10 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 .gf-hint{margin-top:40px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3)}
 .gf-fallback{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .gf-fallback a{display:inline-block;padding:7px 15px;border:1px solid var(--border2);border-radius:100px;color:var(--text2);text-decoration:none;font-size:13px}
+
+/* display face (Syne) has no italic: keep accent words upright, heavier headlines */
+h1,h2,h3,.hero-name,.cs-title,.sec-title,.cs-sec-title,.contact-title,.stat-num,.stat b,.nav-logo,.pn strong{font-weight:600}
+h1 em,h2 em,h3 em,.hero-name em,.cs-title em,.sec-title em,.cs-sec-title em,.contact-title em,.ld-name em,.nav-logo span{font-style:normal}
 </style>
 </head>
 <body>
@@ -531,7 +535,7 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     var ready=document.fonts?Promise.race([Promise.all(words.map(function(t){return document.fonts.load('400 48px '+fam,t)})),new Promise(function(r){setTimeout(r,1500)})]):Promise.resolve();
     ready.then(function(){setTimeout(function cycle(){
       greet.textContent=words[w];
-      greet.style.letterSpacing=/^[\x00-\x7F]+$/.test(words[w])?'':'0';greet.style.fontStyle=/^[\x00-\x7F]+$/.test(words[w])?'italic':'normal';
+      greet.style.letterSpacing=/^[\x00-\x7F]+$/.test(words[w])?'':'0';greet.style.fontStyle=/^[\x00-\x7F]+$/.test(words[w])?'normal':'normal';
       if(++w<words.length)return setTimeout(cycle,280);
       setTimeout(dotName,380);
     },250)});
