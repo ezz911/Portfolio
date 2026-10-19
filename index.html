@@ -279,7 +279,10 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 
 /* --- CHILL ROOM --- */
 .chill{position:relative;border-radius:26px;overflow:hidden;background:#17131c;border:1px solid var(--border);box-shadow:var(--sh-md)}
-.chill svg{display:block;width:100%;height:auto}
+.chill-stage{position:relative;width:100%;aspect-ratio:1/1;background:#1b1520}
+.chill-clip{position:absolute;inset:0;opacity:0;transition:opacity .3s ease}
+.chill-clip.on{opacity:1}
+.chill-clip svg{display:block;width:100%;height:100%}
 .chill-btn{position:absolute;right:20px;bottom:18px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:none;border-radius:100px;background:#f2efe9;color:#1a1814;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35);transition:transform .16s ease-out,background-color .2s ease-out,opacity .2s ease-out}
 .chill-btn:hover{background:#fff;transform:translateY(-2px)}
 .chill-btn:active{transform:scale(.97)}
@@ -287,10 +290,9 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
 .chill-btn[disabled]{opacity:.75;cursor:progress;transform:none}
 .chill-btn .ic{font-size:11px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#lampGlowEl{transition:opacity 1s ease}
-.chill.is-playing #lampGlowEl{opacity:.45}
-#notes text{animation:noteRise 3.2s ease-out forwards}
-@keyframes noteRise{from{opacity:0;transform:translate(0,0)}15%{opacity:1}to{opacity:0;transform:translate(14px,-110px)}}
+.chill-notes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.chill-note{position:absolute;bottom:34%;color:#f6c36a;font-size:26px;font-family:serif;opacity:0;animation:noteRise 3.4s ease-out forwards}
+@keyframes noteRise{from{opacity:0;transform:translate(0,0)}15%{opacity:1}to{opacity:0;transform:translate(16px,-130px)}}
 @media(max-width:640px){.chill{border-radius:20px}.chill-btn{right:12px;bottom:12px;padding:10px 20px;font-size:13px}}
 </style>
 </head>
@@ -944,60 +946,8 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     <h2 class="sec-title">Press <em>play</em></h2>
     <p class="sec-sub">A quiet corner between projects. Put a record on.</p>
     <div class="chill" id="chillWrap">
-      <svg id="chillScene" viewBox="0 0 736 640" role="img" aria-label="Illustrated night-time apartment: a man on a couch, a record cabinet with a turntable, and a city skyline at sunset through a large window">
-        <defs>
-          <linearGradient id="sitFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1308"><stop offset=".58" stop-color="#fff"/><stop offset=".645" stop-color="#000"/></linearGradient>
-          <mask id="sitMask" maskUnits="userSpaceOnUse" x="0" y="0" width="736" height="1308"><rect width="736" height="1308" fill="url(#sitFade)"/></mask>
-          <radialGradient id="lampGlow"><stop offset="0" stop-color="#ffb45a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb45a" stop-opacity="0"/></radialGradient>
-        </defs>
-        <image href="assets/room-bg.jpg" x="0" y="-600" width="736" height="1240" preserveAspectRatio="none"/>
-        <circle id="lampGlowEl" cx="200" cy="470" r="230" fill="url(#lampGlow)" opacity="0"/>
-
-        <!-- cabinet + turntable -->
-        <rect x="14" y="492" width="232" height="100" rx="4" fill="#5b3a2b" stroke="#3a2419"/>
-        <rect x="8" y="482" width="244" height="10" rx="3" fill="#7a4f38"/>
-        <rect x="24" y="500" width="212" height="84" rx="3" fill="#24150f"/>
-        <g id="records"></g>
-        <rect x="24" y="582" width="212" height="3" fill="#3a2419"/>
-        <rect x="26" y="592" width="10" height="9" fill="#2a1c16"/><rect x="224" y="592" width="10" height="9" fill="#2a1c16"/>
-        <rect x="148" y="468" width="100" height="14" rx="3" fill="#1f1c24" stroke="#3b3744"/>
-        <ellipse cx="192" cy="468" rx="42" ry="8" fill="#2b2a33"/>
-        <circle cx="160" cy="476" r="2.4" fill="#e07a3a"/><circle cx="170" cy="476" r="2.4" fill="#e07a3a"/>
-        <circle cx="238" cy="466" r="6.5" fill="#3b3744"/>
-
-        <!-- disc (vinyl) -->
-        <g id="disc" opacity="0"><g id="discScale"><g id="discSpin">
-          <circle r="38" fill="#111"/>
-          <circle r="31" fill="none" stroke="#2d2d33" stroke-width="1"/><circle r="25" fill="none" stroke="#2d2d33" stroke-width="1"/><circle r="19" fill="none" stroke="#2d2d33" stroke-width="1"/>
-          <path d="M0 0L30 -23A38 38 0 0 1 36 -12Z" fill="#fff" opacity=".13"/>
-          <path d="M0 0L-30 23A38 38 0 0 1 -36 12Z" fill="#fff" opacity=".09"/>
-          <circle r="13" fill="#e07a3a"/><circle r="2.6" fill="#1b1824"/><path d="M-9 -3H9" stroke="#fff" stroke-opacity=".5" stroke-width="1.5"/>
-        </g></g></g>
-        <g id="tonearm" transform="translate(238 465) rotate(40)"><path d="M0 0L-46 6" stroke="#cfcfd6" stroke-width="3" stroke-linecap="round"/><rect x="-54" y="3" width="10" height="6" rx="1.5" fill="#8a8a94"/></g>
-
-        <!-- guy, sitting (pixel sprite, fades into the cushion) -->
-        <g id="sitG" transform="translate(414.2 402) scale(.155)" mask="url(#sitMask)">
-          <g id="sitBob">
-            <image href="assets/guy-body.png" x="142" y="15" width="444" height="945"/>
-            <image href="assets/guy-armR.png" x="476" y="445" width="110" height="393"/>
-            <image href="assets/guy-armL.png" x="142" y="445" width="137" height="400"/>
-          </g>
-        </g>
-
-        <!-- guy, standing/walking (origin at feet) -->
-        <g id="walker" display="none" transform="translate(455 612)">
-          <ellipse cx="0" cy="2" rx="26" ry="5" fill="#000" opacity=".4"/>
-          <g id="wSprite" transform="scale(.155) translate(-360 -1295)">
-            <g id="wUpper"><image href="assets/guy-body.png" x="142" y="15" width="444" height="945"/></g>
-            <g id="legF"><image href="assets/guy-legL.png" x="198" y="925" width="184" height="381"/></g>
-            <g id="legB"><image href="assets/guy-legR.png" x="382" y="925" width="167" height="348"/></g>
-            <g id="armB"><image href="assets/guy-armR.png" x="476" y="445" width="110" height="393"/></g>
-            <g id="armF"><image href="assets/guy-armL.png" x="142" y="445" width="137" height="400"/></g>
-          </g>
-        </g>
-
-        <g id="notes" fill="#f6c36a" font-size="22" font-family="serif"></g>
-      </svg>
+      <div class="chill-stage" id="chillStage" role="img" aria-label="Illustrated night-time apartment: a man working on a laptop on the couch. When you press play he gets up, puts a vinyl record on the turntable and sits back down to listen."></div>
+      <div class="chill-notes" id="chillNotes" aria-hidden="true"></div>
       <button class="chill-btn" id="chillBtn" type="button" aria-pressed="false"><span class="ic" aria-hidden="true">▶</span><span class="lbl">Play music</span></button>
       <p class="sr-only" id="chillStatus" role="status" aria-live="polite"></p>
     </div>
@@ -1052,139 +1002,15 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
   });
 })();
 </script>
+<script src="assets/lottie_light.min.js"></script>
 <script>
 (function(){
-  var svg=document.getElementById('chillScene');
-  if(!svg)return;
+  var stage=document.getElementById('chillStage');
+  if(!stage)return;
   var $=function(id){return document.getElementById(id)};
-  var NS='http://www.w3.org/2000/svg';
   var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var SPEED=reduce?0.5:1;
-  var wrap=$('chillWrap'),btn=$('chillBtn'),status=$('chillStatus');
+  var wrap=$('chillWrap'),btn=$('chillBtn'),status=$('chillStatus'),notesEl=$('chillNotes');
   var lbl=btn.querySelector('.lbl'),ic=btn.querySelector('.ic');
-
-  function el(name,attrs,parent){
-    var n=document.createElementNS(NS,name);
-    for(var k in attrs)n.setAttribute(k,attrs[k]);
-    if(parent)parent.appendChild(n);
-    return n;
-  }
-
-  // ---------- records in the cabinet ----------
-  (function(){
-    var cols=['#c9553a','#e8c27a','#3c5a78','#8a9a7b','#d98d5f','#6d4a6a','#efe3cf','#2f4a57'],rec=$('records');
-    for(var i=0;i<16;i++){
-      var special=i===13,hh=special?78:56+((i*7)%14);
-      el('rect',{x:28+i*13,y:582-hh,width:11,height:hh,rx:1.5,fill:special?'#efe3cf':cols[i%cols.length]},rec);
-    }
-  })();
-
-  // ---------- motion helpers ----------
-  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
-  function tween(ms,fn,linear){
-    return new Promise(function(res){
-      var t0=performance.now(),d=Math.max(1,ms*SPEED);
-      (function f(n){
-        var k=Math.min(1,(n-t0)/d);
-        fn(linear?k:ease(k),k);
-        if(k<1)requestAnimationFrame(f);else res();
-      })(t0);
-    });
-  }
-  function wait(ms){return new Promise(function(r){setTimeout(r,ms*SPEED)})}
-  function lerp(a,b,k){return a+(b-a)*k}
-
-  // ---------- walker ----------
-  var walker=$('walker'),sprite=$('wSprite'),upper=$('wUpper'),legF=$('legF'),legB=$('legB'),armF=$('armF'),armB=$('armB'),sitG=$('sitG'),sitBob=$('sitBob');
-  var K=.155,FLOOR=612,W={x:455,y:FLOOR,dir:1,sy:1,legs:0,armF:0,armB:0,tilt:0};
-  var SIT_X=455,CAB_X=266;
-  function drawWalker(){
-    walker.setAttribute('transform','translate('+W.x+' '+W.y+')');
-    sprite.setAttribute('transform','scale('+K+' '+(K*W.sy)+') translate(-360 -1295)');
-    upper.setAttribute('transform','rotate('+W.tilt+' 360 940)');
-    legF.setAttribute('transform','rotate('+W.legs+' 300 935)');
-    legB.setAttribute('transform','rotate('+(-W.legs)+' 450 935)');
-    armF.setAttribute('transform','rotate('+W.armF+' 212 458)');
-    armB.setAttribute('transform','rotate('+W.armB+' 508 462)');
-  }
-  function tip(theta){
-    var r=theta*Math.PI/180,c=Math.cos(r),sn=Math.sin(r);
-    return {
-      x:W.x+(212-360)*K+K*(20*c-342*sn),
-      y:W.y+(458-1295)*K*W.sy+K*W.sy*(20*sn+342*c)
-    };
-  }
-  function standUp(){
-    sitG.setAttribute('display','none');
-    walker.removeAttribute('display');
-    W.x=SIT_X;W.y=FLOOR;W.dir=1;W.sy=.8;W.legs=0;W.tilt=0;W.armF=0;W.armB=0;
-    return tween(450,function(k){W.sy=lerp(.8,1,k);drawWalker()});
-  }
-  function sitDown(){
-    W.x=SIT_X;W.dir=1;W.y=FLOOR;W.legs=0;W.tilt=0;W.armF=0;W.armB=0;
-    return tween(420,function(k){W.sy=lerp(1,.8,k);drawWalker()}).then(function(){
-      walker.setAttribute('display','none');
-      sitG.removeAttribute('display');
-    });
-  }
-  function walkTo(x){
-    var x0=W.x,dx=x-x0,dist=Math.abs(dx);
-    W.dir=dx<0?1:-1;
-    return tween(dist/.17,function(k){
-      var ph=k*dist/24*Math.PI;
-      W.x=x0+dx*k;
-      W.legs=Math.sin(ph)*10;W.tilt=Math.cos(ph)*1.4;
-      W.y=FLOOR-Math.abs(Math.cos(ph))*2.5;
-      W.armB=-W.legs*.8;
-      if(!holding)W.armF=W.legs*.8;
-      drawWalker();syncDisc();
-    },true).then(function(){W.legs=0;W.tilt=0;W.y=FLOOR;W.armB=0;if(!holding)W.armF=0;drawWalker()});
-  }
-  function armTo(theta,ms){
-    var a0=W.armF;
-    return tween(ms,function(k){W.armF=lerp(a0,theta,k);drawWalker();syncDisc()});
-  }
-
-  // ---------- vinyl ----------
-  var disc=$('disc'),discScale=$('discScale'),discSpin=$('discSpin');
-  var D={x:0,y:0,sx:.68,sy:.68,rot:0,o:0},holding=false,PLATTER={x:192,y:466};
-  function drawDisc(){
-    disc.setAttribute('transform','translate('+D.x+' '+D.y+')');
-    disc.setAttribute('opacity',D.o);
-    discScale.setAttribute('transform','scale('+D.sx+' '+D.sy+')');
-    discSpin.setAttribute('transform','rotate('+D.rot+')');
-  }
-  function syncDisc(){
-    if(!holding)return;
-    var t=tip(W.armF);D.x=t.x;D.y=t.y;drawDisc();
-  }
-
-  // ---------- turntable ----------
-  var tonearm=$('tonearm'),arm={a:40},spin=0,looping=false,lastT=0,nodding=false,onPlatter=false;
-  function drawArm(){tonearm.setAttribute('transform','translate(238 465) rotate('+arm.a+')')}
-  function moveArm(to,ms){var a0=arm.a;return tween(ms,function(k){arm.a=lerp(a0,to,k);drawArm()})}
-  function rampSpin(to,ms){var s0=spin;return tween(ms,function(k){spin=lerp(s0,to,k)},true)}
-  function ensureLoop(){
-    if(looping)return;
-    looping=true;lastT=performance.now();
-    requestAnimationFrame(function f(n){
-      var dt=Math.min(.05,(n-lastT)/1000);lastT=n;
-      if(spin>.001&&onPlatter){D.rot=(D.rot+spin*198*dt)%360;drawDisc()}
-      if(nodding){
-        var ph=n/1000*Math.PI*2*(74/60)/1;
-        sitBob.setAttribute('transform','translate(0 '+(-Math.abs(Math.sin(ph))*6)+') rotate('+(Math.sin(ph)*1.2)+' 360 760)');
-      }
-      if(spin>.001||nodding)requestAnimationFrame(f);else looping=false;
-    });
-  }
-
-  // ---------- floating notes ----------
-  var notesG=$('notes'),noteTimer=null;
-  function spawnNote(){
-    var t=el('text',{x:170+Math.random()*50,y:440,opacity:0},notesG);
-    t.textContent=Math.random()<.5?'♪':'♫';
-    setTimeout(function(){notesG.removeChild(t)},3300);
-  }
 
   // ---------- lo-fi engine ----------
   var audio=(function(){
@@ -1272,87 +1098,121 @@ html.theme-anim *{transition:background-color .3s ease,color .3s ease,border-col
     };
   })();
 
+  // ---------- floating notes ----------
+  var noteTimer=null;
+  function spawnNote(){
+    var n=document.createElement('span');
+    n.className='chill-note';n.textContent=Math.random()<.5?'♪':'♫';
+    n.style.left=(52+Math.random()*30)+'%';
+    notesEl.appendChild(n);
+    setTimeout(function(){notesEl.removeChild(n)},3500);
+  }
+
+  // ---------- animation clips ----------
+  var CLIPS=['work-laptop','stand-walk','fetch-record','return-sit','idle-sit'];
+  var anims={},els={},current=null,visible=true;
+  var ready=Promise.all(CLIPS.map(function(name){
+    var el=document.createElement('div');
+    el.className='chill-clip';stage.appendChild(el);els[name]=el;
+    return fetch('assets/lottie/'+name+'.json').then(function(r){
+      if(!r.ok)throw new Error(name+' '+r.status);
+      return r.json();
+    }).then(function(data){
+      anims[name]=lottie.loadAnimation({container:el,renderer:'svg',loop:false,autoplay:false,animationData:data,
+        rendererSettings:{preserveAspectRatio:'xMidYMid slice'}});
+    });
+  }));
+
+  function show(name){
+    var prev=current;current=name;
+    els[name].classList.add('on');
+    if(prev&&prev!==name){
+      var old=prev;els[old].classList.remove('on');
+      setTimeout(function(){if(current!==old)anims[old].pause()},350);
+    }
+  }
+  function playLoop(name){
+    var a=anims[name];a.loop=true;a.goToAndPlay(0,true);show(name);
+  }
+  function playOnce(name,onFrame){
+    return new Promise(function(res){
+      var a=anims[name];a.loop=false;
+      var done=function(){a.removeEventListener('complete',done);if(onFrame)a.removeEventListener('enterFrame',frame);res()};
+      var frame=function(e){if(onFrame)onFrame(e.currentTime)};
+      a.addEventListener('complete',done);
+      if(onFrame)a.addEventListener('enterFrame',frame);
+      a.goToAndPlay(0,true);show(name);
+    });
+  }
+  function idleWork(){
+    if(reduce){anims['work-laptop'].goToAndStop(0,true);show('work-laptop')}
+    else playLoop('work-laptop');
+  }
+  ready.then(function(){
+    idleWork();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        visible=es[0].isIntersecting;
+        var a=current&&anims[current];
+        if(!a)return;
+        if(!a.loop)return;
+        if(visible&&!reduce)a.play();else a.pause();
+      },{threshold:.05}).observe(stage);
+    }
+  }).catch(function(err){
+    if(window.console)console.error('Press play failed to load:',err);
+    ui('Unavailable','▶',true,false);
+    status.textContent='The animation could not be loaded.';
+  });
+
   // ---------- the show ----------
-  var playing=false,busy=false;
+  var playing=false,busy=false,musicOn=false;
   function ui(label,icon,disabled,pressed){
     lbl.textContent=label;ic.textContent=icon;btn.disabled=!!disabled;btn.setAttribute('aria-pressed',pressed?'true':'false');
+  }
+  function startMusic(){
+    if(musicOn)return;musicOn=true;
+    audio.start();
+    spawnNote();noteTimer=setInterval(spawnNote,1200);
+  }
+  function stopMusic(){
+    musicOn=false;audio.stop();clearInterval(noteTimer);
   }
 
   async function play(){
     busy=true;ui('Setting the mood…','♪',true,false);
     status.textContent='Putting a record on.';
     audio.prime();
-    await standUp();
-    await walkTo(CAB_X);
-    await armTo(60,650);
-    var t=tip(60);
-    D.x=t.x;D.y=t.y+34;D.sx=D.sy=.68;D.rot=0;D.o=0;drawDisc();
-    await tween(320,function(k){D.y=lerp(t.y+34,t.y,k);D.o=k;drawDisc()});
-    holding=true;
-    await armTo(45,350);
-    await armTo(110,700);
-    holding=false;
-    await tween(450,function(k){
-      D.x=lerp(D.x,PLATTER.x,k);D.y=lerp(D.y,PLATTER.y,k);
-      D.sx=lerp(.68,1,k);D.sy=lerp(.68,.2,k);drawDisc();
-    });
-    D.x=PLATTER.x;D.y=PLATTER.y;D.sx=1;D.sy=.2;drawDisc();
-    onPlatter=true;
-    await armTo(0,550);
-    rampSpin(1,1100);ensureLoop();
-    await moveArm(0,700);
-    audio.start();playing=true;wrap.classList.add('is-playing');
-    spawnNote();noteTimer=setInterval(spawnNote,1100);
-    await wait(150);
-    await walkTo(SIT_X);
-    await sitDown();
-    nodding=true;ensureLoop();
-    busy=false;ui('Stop music','■',false,true);
+    await ready;
+    await playOnce('stand-walk');
+    await playOnce('fetch-record',function(f){if(f>=REC_FRAME)startMusic()});
+    startMusic();
+    await playOnce('return-sit');
+    playLoop('idle-sit');
+    playing=true;busy=false;
+    ui('Stop music','■',false,true);
     status.textContent='Now playing.';
   }
-
-  async function stop(){
-    busy=true;ui('Putting it away…','♪',true,true);
-    status.textContent='Stopping the music.';
-    audio.stop();playing=false;
-    clearInterval(noteTimer);wrap.classList.remove('is-playing');
-    nodding=false;sitBob.removeAttribute('transform');
-    var armUp=moveArm(40,600);
-    rampSpin(0,1200);
-    await standUp();
-    await walkTo(CAB_X);
-    await armUp;
-    await armTo(110,650);
-    var t=tip(110);
-    await tween(420,function(k){
-      D.x=lerp(PLATTER.x,t.x,k);D.y=lerp(PLATTER.y,t.y,k);
-      D.sx=lerp(1,.68,k);D.sy=lerp(.2,.68,k);drawDisc();
-    });
-    onPlatter=false;spin=0;D.rot=0;
-    holding=true;
-    await armTo(60,650);
-    var s=tip(60);
-    await tween(320,function(k){D.y=lerp(s.y,s.y+34,k);D.o=1-k;drawDisc()});
-    holding=false;
-    await armTo(0,550);
-    await walkTo(SIT_X);
-    await sitDown();
-    busy=false;ui('Play music','▶',false,false);
+  function stop(){
+    stopMusic();playing=false;
+    idleWork();
+    ui('Play music','▶',false,false);
     status.textContent='Music stopped.';
   }
+  var REC_FRAME=92;
 
   function recover(err){
     if(window.console)console.error('Press play failed:',err);
-    audio.stop();playing=false;busy=false;holding=false;nodding=false;onPlatter=false;spin=0;
-    clearInterval(noteTimer);wrap.classList.remove('is-playing');
-    walker.setAttribute('display','none');sitG.removeAttribute('display');
-    sitBob.removeAttribute('transform');D.o=0;drawDisc();arm.a=40;drawArm();
+    stopMusic();playing=false;busy=false;
+    if(anims['work-laptop'])idleWork();
     ui('Try again','▶',false,false);
     status.textContent='Something went wrong. Press play to try again.';
   }
   btn.addEventListener('click',function(){
     if(busy)return;
-    (playing?stop():play()).catch(recover);
+    try{
+      if(playing)stop();else play().catch(recover);
+    }catch(e){recover(e)}
   });
 })();
 </script>
