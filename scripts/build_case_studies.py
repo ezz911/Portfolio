@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from case_data import PROJECTS
 
 E = html.escape
-FONTS = "https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@300;400&display=swap"
+FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700..900&display=swap"
 THEME_JS = "(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
 CSS = """
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -63,6 +63,18 @@ p,.cs-body,.hero-bio,.sec-sub,.cs-subtitle,.feat p,.note span{text-wrap:pretty}
 .stat-num,.stat b,.counter,.cs-meta-value,.mp-times{font-variant-numeric:lining-nums tabular-nums}
 .eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-size:12px;line-height:1.2;letter-spacing:.08em;text-transform:uppercase}
 .hero-bio,.cs-body{line-height:1.6}
+
+/* Arial + Epic Pro pairing: wide heavy display (Archivo Expanded stands in for Epic Pro), Arial body */
+:root{--sans:Arial,'Helvetica Neue',Helvetica,sans-serif;--serif:'Epic Pro','Archivo','Arial Black',Arial,sans-serif;--mono:Arial,'Helvetica Neue',Helvetica,sans-serif}
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name,.nav-logo,.stat-num,.stat b,.pn strong,h1,h2{font-family:var(--serif);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.02em;line-height:.98}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--serif);font-weight:800;font-style:normal;letter-spacing:-.02em}
+.hero-name{font-size:clamp(34px,6.4vw,76px)!important}
+.sec-title,.cs-sec-title{font-size:clamp(28px,4.4vw,56px)}
+.cs-title{font-size:clamp(34px,5.6vw,72px)}
+.contact-title{font-size:clamp(32px,5vw,64px)}
+.stat-num,.stat b{font-size:34px!important;font-weight:800}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:700;letter-spacing:.08em}
+.nav-logo{font-size:20px}
 """
 
 def page(i, p):
