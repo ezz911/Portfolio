@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from case_data import PROJECTS
 
 E = html.escape
-FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700..900&display=swap"
+FONTS = "https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap"
 THEME_JS = "(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
 CSS = """
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -75,6 +75,19 @@ p,.cs-body,.hero-bio,.sec-sub,.cs-subtitle,.feat p,.note span{text-wrap:pretty}
 .stat-num,.stat b{font-size:34px!important;font-weight:800}
 .eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:700;letter-spacing:.08em}
 .nav-logo{font-size:20px}
+
+/* Sailors headlines + Proxima Nova Condensed body (free lookalikes: Abril Fatface, Barlow Semi Condensed) */
+:root{--sans:'Proxima Nova Condensed','Proxima Nova Cond','Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;--serif:'Sailors','Abril Fatface','Playfair Display',Georgia,serif;--mono:'Proxima Nova Condensed','Proxima Nova Cond','Barlow Semi Condensed','Arial Narrow',Arial,sans-serif}
+body{font-size:18px;line-height:1.5}
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name,.nav-logo,.stat-num,.stat b,.pn strong,h1,h2{font-family:var(--serif);font-weight:400;font-stretch:100%;text-transform:none;letter-spacing:-.005em;line-height:1.04}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--serif);font-weight:400;font-style:normal;letter-spacing:-.005em}
+.hero-name{font-size:clamp(40px,7vw,84px)!important}
+.sec-title,.cs-sec-title{font-size:clamp(34px,5vw,60px)}
+.cs-title{font-size:clamp(40px,6.4vw,80px)}
+.contact-title{font-size:clamp(36px,5.4vw,68px)}
+.stat-num,.stat b{font-size:40px!important}
+.nav-logo{font-size:24px}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em}
 """
 
 def page(i, p):
