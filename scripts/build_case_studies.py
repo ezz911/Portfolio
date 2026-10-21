@@ -88,6 +88,19 @@ body{font-size:18px;line-height:1.5}
 .stat-num,.stat b{font-size:40px!important}
 .nav-logo{font-size:24px}
 .eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em}
+@font-face{font-family:'Epic Pro';src:url(assets/fonts/epic-pro.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+/* Arial + Epic Pro (real font, GC EPICPRO Extra Bold; no rupee glyph so the Arial fallback draws it) */
+:root{--sans:Arial,'Helvetica Neue',Helvetica,sans-serif;--serif:'Epic Pro',Arial,'Helvetica Neue',sans-serif;--mono:Arial,'Helvetica Neue',Helvetica,sans-serif}
+body{font-size:17px;line-height:1.55}
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name,.nav-logo,.stat-num,.stat b,.pn strong,h1,h2{font-family:var(--serif);font-weight:800;font-stretch:100%;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--serif);font-weight:800;font-style:normal;letter-spacing:-.01em}
+.hero-name{font-size:clamp(30px,5vw,60px)!important}
+.sec-title,.cs-sec-title{font-size:clamp(26px,4vw,50px)}
+.cs-title{font-size:clamp(30px,5vw,64px)}
+.contact-title{font-size:clamp(28px,4.6vw,58px)}
+.stat-num,.stat b{font-size:32px!important}
+.nav-logo{font-size:19px}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em}
 """
 
 def page(i, p):
@@ -119,7 +132,6 @@ def page(i, p):
 <meta property="og:image" content="assets/projects/{s}/cover.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="{FONTS}" rel="stylesheet">
 <script>{THEME_JS}</script>
 <style>{CSS}</style>
 </head>
