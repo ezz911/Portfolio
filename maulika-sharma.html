@@ -6,6 +6,7 @@
 <title>Maulika Sharma — Case Study · Paras Nagda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
 <script>(function(){try{var t=localStorage.getItem('pn-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -111,6 +112,25 @@ body{font-size:17px;line-height:1.55}
 .stat-num,.stat b{font-size:32px!important}
 .nav-logo{font-size:19px}
 .eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em}
+/* Bricolage Grotesque headlines (88/90, -0.03em, #18160f) */
+:root{--serif:'Bricolage Grotesque',system-ui,sans-serif}
+.hero-name,.sec-title,.cs-title,.cs-sec-title,.contact-title,.ld-name,.nav-logo,.stat-num,.stat b,.pn strong,h1,h2{font-family:var(--serif);font-weight:400;text-transform:none;letter-spacing:-.03em;line-height:1.02;color:#18160f;font-optical-sizing:auto}
+:root[data-theme="dark"] .hero-name,:root[data-theme="dark"] .sec-title,:root[data-theme="dark"] .cs-title,:root[data-theme="dark"] .cs-sec-title,:root[data-theme="dark"] .contact-title,:root[data-theme="dark"] .stat-num,:root[data-theme="dark"] .stat b,:root[data-theme="dark"] .nav-logo,:root[data-theme="dark"] .pn strong{color:var(--text)}
+.hero-name em,.sec-title em,.cs-title em,.cs-sec-title em,.contact-title em,.ld-name em{font-family:var(--serif);font-weight:400;font-style:normal;letter-spacing:-.03em;color:var(--accent)}
+.hero-name{font-size:clamp(44px,7.2vw,88px)!important;line-height:1.023}
+.sec-title,.cs-sec-title{font-size:clamp(36px,5vw,64px)}
+.cs-title{font-size:clamp(44px,7vw,88px)}
+.contact-title{font-size:clamp(38px,5.6vw,72px)}
+.stat-num,.stat b{font-size:44px!important}
+.nav-logo{font-size:24px}
+/* Google Sans Flex body (17/30, 300, #6b6455), self-hosted */
+@font-face{font-family:'Google Sans Flex';src:url(assets/fonts/google-sans-flex.woff2) format('woff2');font-weight:1 1000;font-style:normal;font-display:swap}
+:root{--sans:'Google Sans Flex',system-ui,sans-serif;--mono:'Google Sans Flex',system-ui,sans-serif}
+body{font-family:var(--sans);font-size:17px;font-weight:400;line-height:30px}
+p,.hero-bio,.sec-sub,.cs-subtitle,.cs-body,.cs-body p,.feat p,.note span,.mobile p,.stat span{font-size:17px;font-weight:300;line-height:30px;color:#6b6455}
+:root[data-theme="dark"] p,:root[data-theme="dark"] .hero-bio,:root[data-theme="dark"] .sec-sub,:root[data-theme="dark"] .cs-subtitle,:root[data-theme="dark"] .cs-body,:root[data-theme="dark"] .cs-body p,:root[data-theme="dark"] .feat p,:root[data-theme="dark"] .note span,:root[data-theme="dark"] .mobile p,:root[data-theme="dark"] .stat span{color:var(--text2)}
+.hero-bio strong,.cs-body strong{font-weight:500}
+.eyebrow,.cs-eyebrow,.cs-tag,.cs-meta-label,.pn small,.gf-hint,.gf-meta,.gf-sheet-meta,.ld-note,.ld-kicker{font-family:var(--sans);font-weight:500}
 </style>
 </head>
 <body>
